@@ -1,0 +1,12 @@
+{
+  "name": "world-cup-2026-monte-carlo",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build:frontend": "npm --prefix frontend run build",
+    "vercel": "vercel"
+  },
+  "devDependencies": {
+    "vercel": "^52.0.0"
+  }
+}
