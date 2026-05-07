@@ -1,0 +1,118 @@
+player_id,player_name,national_team,club,league,position,overall_rating,pace,shooting,passing,dribbling,defending,physical,minutes_played,goals,assists
+1,Lionel Messi,Argentina,Inter Miami,MLS,FW,90,78,89,91,92,38,65,2400,21,15
+2,Julian Alvarez,Argentina,Manchester City,Premier League,FW,85,82,84,78,84,56,78,2800,19,9
+3,Alexis Mac Allister,Argentina,Liverpool,Premier League,MF,86,73,78,86,84,71,75,3000,8,10
+4,Enzo Fernandez,Argentina,Chelsea,Premier League,MF,84,73,76,84,82,72,78,2600,4,7
+5,Cristian Romero,Argentina,Tottenham,Premier League,DF,85,72,45,67,70,86,84,2900,3,1
+6,Lisandro Martinez,Argentina,Manchester United,Premier League,DF,84,69,42,75,73,85,80,2200,1,2
+7,Emiliano Martinez,Argentina,Aston Villa,Premier League,GK,86,51,20,54,58,19,82,3420,0,0
+8,Kylian Mbappe,France,Real Madrid,La Liga,FW,91,97,90,82,92,38,77,2900,29,11
+9,Antoine Griezmann,France,Atletico Madrid,La Liga,FW,88,79,86,88,89,54,72,3100,18,13
+10,Ousmane Dembele,France,PSG,Ligue 1,FW,86,93,79,82,89,40,61,2600,11,14
+11,Aurelien Tchouameni,France,Real Madrid,La Liga,MF,86,73,71,83,80,83,84,2800,5,4
+12,Adrien Rabiot,France,Marseille,Ligue 1,MF,84,74,74,80,81,77,82,2500,7,5
+13,William Saliba,France,Arsenal,Premier League,DF,87,78,46,73,76,87,83,3200,2,1
+14,Mike Maignan,France,AC Milan,Serie A,GK,87,51,18,58,64,21,83,3150,0,0
+15,Vinicius Junior,Brazil,Real Madrid,La Liga,FW,90,95,86,81,91,32,72,2750,24,10
+16,Rodrygo,Brazil,Real Madrid,La Liga,FW,86,88,84,79,88,39,69,2550,17,8
+17,Raphinha,Brazil,Barcelona,La Liga,FW,85,86,82,81,87,45,69,2700,13,12
+18,Bruno Guimaraes,Brazil,Newcastle,Premier League,MF,86,72,75,84,83,79,82,3050,6,8
+19,Lucas Paqueta,Brazil,West Ham,Premier League,MF,84,76,78,82,84,67,75,2550,9,7
+20,Marquinhos,Brazil,PSG,Ligue 1,DF,87,74,44,75,77,87,79,2900,2,2
+21,Alisson,Brazil,Liverpool,Premier League,GK,89,49,20,65,63,18,86,3240,0,0
+22,Harry Kane,England,Bayern Munich,Bundesliga,FW,89,69,91,83,83,49,83,2960,31,8
+23,Bukayo Saka,England,Arsenal,Premier League,FW,87,86,83,82,88,55,70,2850,18,12
+24,Phil Foden,England,Manchester City,Premier League,FW,88,84,85,84,90,48,65,2780,21,11
+25,Jude Bellingham,England,Real Madrid,La Liga,MF,90,80,84,86,88,76,82,3000,16,9
+26,Declan Rice,England,Arsenal,Premier League,MF,87,74,73,82,81,84,84,3150,7,6
+27,John Stones,England,Manchester City,Premier League,DF,85,70,46,78,77,84,78,2400,2,2
+28,Jordan Pickford,England,Everton,Premier League,GK,84,48,19,58,57,20,79,3420,0,0
+29,Alvaro Morata,Spain,AC Milan,Serie A,FW,84,78,83,74,78,34,72,2500,17,4
+30,Lamine Yamal,Spain,Barcelona,La Liga,FW,85,89,78,80,90,38,58,2100,10,9
+31,Nico Williams,Spain,Athletic Club,La Liga,FW,84,92,79,76,87,41,65,2350,11,8
+32,Pedri,Spain,Barcelona,La Liga,MF,86,78,74,87,89,63,63,2200,5,9
+33,Rodri,Spain,Manchester City,Premier League,MF,91,66,78,89,82,86,84,3200,8,7
+34,Dani Olmo,Spain,RB Leipzig,Bundesliga,MF,84,77,80,83,85,56,65,2150,9,8
+35,Dani Carvajal,Spain,Real Madrid,La Liga,DF,86,78,54,78,79,84,79,2850,3,5
+36,Unai Simon,Spain,Athletic Club,La Liga,GK,84,47,17,55,57,18,79,3150,0,0
+37,Cristiano Ronaldo,Portugal,Al Nassr,Saudi Pro League,FW,88,74,92,78,84,36,77,2700,28,7
+38,Bernardo Silva,Portugal,Manchester City,Premier League,FW,88,79,79,88,90,58,67,2900,12,13
+39,Rafael Leao,Portugal,AC Milan,Serie A,FW,86,92,83,77,88,34,74,2480,15,9
+40,Bruno Fernandes,Portugal,Manchester United,Premier League,MF,88,73,82,89,84,67,74,3200,14,12
+41,Joao Neves,Portugal,PSG,Ligue 1,MF,82,72,69,83,81,77,71,2400,4,6
+42,Ruben Dias,Portugal,Manchester City,Premier League,DF,88,67,42,72,70,89,84,2950,2,1
+43,Diogo Costa,Portugal,FC Porto,Primeira Liga,GK,84,49,18,57,59,17,80,3060,0,0
+44,Florian Wirtz,Germany,Bayer Leverkusen,Bundesliga,FW,88,81,84,87,90,46,65,2750,18,16
+45,Jamal Musiala,Germany,Bayern Munich,Bundesliga,FW,87,86,80,84,91,45,64,2550,15,10
+46,Kai Havertz,Germany,Arsenal,Premier League,FW,85,77,83,78,81,56,79,2850,16,7
+47,Ilkay Gundogan,Germany,Barcelona,La Liga,MF,85,67,78,86,84,70,71,2600,6,8
+48,Joshua Kimmich,Germany,Bayern Munich,Bundesliga,MF,86,69,73,88,83,82,76,3000,5,10
+49,Antonio Rudiger,Germany,Real Madrid,La Liga,DF,86,75,41,68,69,87,86,3100,2,1
+50,Marc-Andre ter Stegen,Germany,Barcelona,La Liga,GK,88,47,18,63,66,18,80,2880,0,0
+51,Memphis Depay,Netherlands,Corinthians,Brasileirao,FW,83,78,82,78,84,36,72,2100,12,5
+52,Cody Gakpo,Netherlands,Liverpool,Premier League,FW,84,82,82,78,84,42,77,2550,17,8
+53,Xavi Simons,Netherlands,RB Leipzig,Bundesliga,FW,84,84,78,82,87,48,63,2700,13,12
+54,Tijjani Reijnders,Netherlands,AC Milan,Serie A,MF,84,77,76,84,83,68,72,2950,8,9
+55,Frenkie de Jong,Netherlands,Barcelona,La Liga,MF,87,79,72,88,88,74,75,2300,4,6
+56,Virgil van Dijk,Netherlands,Liverpool,Premier League,DF,88,69,44,72,71,89,84,3150,4,2
+57,Bart Verbruggen,Netherlands,Brighton,Premier League,GK,82,46,16,54,58,17,78,2800,0,0
+58,Romelu Lukaku,Belgium,Napoli,Serie A,FW,84,77,85,72,77,37,82,2450,20,4
+59,Jeremy Doku,Belgium,Manchester City,Premier League,FW,84,92,76,78,89,36,61,2100,9,12
+60,Lois Openda,Belgium,RB Leipzig,Bundesliga,FW,85,88,84,73,80,34,78,2600,22,5
+61,Kevin De Bruyne,Belgium,Manchester City,Premier League,MF,90,67,86,93,87,64,78,2250,10,15
+62,Youri Tielemans,Belgium,Aston Villa,Premier League,MF,84,66,78,84,79,70,74,2800,8,8
+63,Amadou Onana,Belgium,Aston Villa,Premier League,MF,82,74,68,76,77,79,84,2550,4,3
+64,Arthur Theate,Belgium,Eintracht Frankfurt,Bundesliga,DF,81,72,42,70,71,81,79,2700,2,2
+65,Koen Casteels,Belgium,Al Qadsiah,Saudi Pro League,GK,81,45,16,53,55,16,77,3060,0,0
+66,Federico Chiesa,Italy,Liverpool,Premier League,FW,84,86,80,76,85,38,69,2100,11,7
+67,Giacomo Raspadori,Italy,Napoli,Serie A,FW,82,77,81,78,82,40,67,2050,12,6
+68,Nicolo Barella,Italy,Inter,Serie A,MF,87,78,79,84,86,75,79,2950,8,10
+69,Lorenzo Pellegrini,Italy,Roma,Serie A,MF,84,72,77,83,82,65,74,2500,9,9
+70,Sandro Tonali,Italy,Newcastle,Premier League,MF,85,74,73,83,81,79,80,2600,4,6
+71,Alessandro Bastoni,Italy,Inter,Serie A,DF,87,72,47,78,79,86,79,3100,2,4
+72,Gianluigi Donnarumma,Italy,PSG,Ligue 1,GK,87,48,18,55,60,17,84,3240,0,0
+73,Christian Pulisic,USA,AC Milan,Serie A,FW,84,85,80,78,86,42,64,2700,16,10
+74,Folarin Balogun,USA,Monaco,Ligue 1,FW,81,82,80,68,78,32,71,2300,13,3
+75,Tim Weah,USA,Juventus,Serie A,FW,79,86,72,74,79,45,67,2150,7,6
+76,Weston McKennie,USA,Juventus,Serie A,MF,82,75,72,77,78,73,82,2600,5,7
+77,Yunus Musah,USA,AC Milan,Serie A,MF,80,79,68,76,82,69,75,2200,3,5
+78,Tyler Adams,USA,Bournemouth,Premier League,MF,81,73,60,75,76,78,83,2000,2,3
+79,Chris Richards,USA,Crystal Palace,Premier League,DF,79,71,38,69,68,80,78,2450,2,1
+80,Matt Turner,USA,Crystal Palace,Premier League,GK,78,46,15,51,53,17,74,1800,0,0
+81,Santiago Gimenez,Mexico,Feyenoord,Eredivisie,FW,83,76,84,70,77,33,78,2550,24,5
+82,Hirving Lozano,Mexico,PSV,Eredivisie,FW,82,88,79,77,84,40,63,2200,11,8
+83,Julian Quinones,Mexico,Club America,Liga MX,FW,81,84,80,72,80,42,74,2300,14,6
+84,Edson Alvarez,Mexico,West Ham,Premier League,MF,83,68,68,78,77,82,84,2900,4,4
+85,Luis Chavez,Mexico,Dynamo Moscow,Russian Premier League,MF,80,71,75,80,78,70,76,2400,6,7
+86,Orbelin Pineda,Mexico,AEK Athens,Super League Greece,MF,80,78,73,79,82,62,69,2350,8,9
+87,Johan Vasquez,Mexico,Genoa,Serie A,DF,79,68,37,66,70,81,77,2800,2,1
+88,Guillermo Ochoa,Mexico,Salernitana,Serie A,GK,79,43,14,50,52,18,71,2400,0,0
+89,Achraf Hakimi,Morocco,PSG,Ligue 1,DF,85,92,72,81,82,78,76,2950,6,8
+90,Youssef En-Nesyri,Morocco,Fenerbahce,Super Lig,FW,82,78,83,65,72,34,80,2500,18,4
+91,Hakim Ziyech,Morocco,Al Duhail,Qatar Stars League,FW,81,76,79,84,82,38,62,2050,9,10
+92,Sofiane Boufal,Morocco,Union SG,Belgian Pro League,FW,79,82,75,79,84,40,63,1900,7,8
+93,Azzedine Ounahi,Morocco,Marseille,Ligue 1,MF,79,77,70,80,82,66,68,2100,4,6
+94,Sofyan Amrabat,Morocco,Fenerbahce,Super Lig,MF,81,66,64,77,74,81,83,2600,2,3
+95,Nayef Aguerd,Morocco,West Ham,Premier League,DF,82,69,40,72,71,84,80,2500,2,1
+96,Yassine Bounou,Morocco,Al Hilal,Saudi Pro League,GK,84,47,15,53,56,18,79,3060,0,0
+97,Federico Valverde,Uruguay,Real Madrid,La Liga,MF,88,84,82,84,83,78,86,3200,12,9
+98,Darwin Nunez,Uruguay,Liverpool,Premier League,FW,84,89,82,71,78,39,84,2500,18,6
+99,Rodrigo Bentancur,Uruguay,Tottenham,Premier League,MF,82,73,70,79,78,78,79,2050,3,4
+100,Manuel Ugarte,Uruguay,PSG,Ligue 1,MF,82,71,60,75,74,83,81,2400,2,2
+101,Giorgian de Arrascaeta,Uruguay,Flamengo,Brasileirao,MF,83,74,77,83,85,55,68,2300,10,11
+102,Ronald Araujo,Uruguay,Barcelona,La Liga,DF,84,78,44,69,70,85,84,2500,2,1
+103,Sergio Rochet,Uruguay,Internacional,Brasileirao,GK,81,45,14,50,52,17,76,3000,0,0
+104,Luka Modric,Croatia,Real Madrid,La Liga,MF,86,70,76,89,87,72,65,2100,5,9
+105,Josko Gvardiol,Croatia,Manchester City,Premier League,DF,86,80,56,77,79,85,84,2900,4,3
+106,Marcelo Brozovic,Croatia,Al Nassr,Saudi Pro League,MF,83,68,68,82,80,78,79,2600,4,7
+107,Mateo Kovacic,Croatia,Manchester City,Premier League,MF,83,73,70,84,85,72,75,2550,3,5
+108,Andrej Kramaric,Croatia,Hoffenheim,Bundesliga,FW,82,74,81,79,82,41,71,2400,16,7
+109,Ivan Perisic,Croatia,Hajduk Split,HNL,FW,81,78,78,79,80,58,74,1800,8,8
+110,Dominik Livakovic,Croatia,Fenerbahce,Super Lig,GK,82,45,13,49,51,16,77,3150,0,0
+111,Takefusa Kubo,Japan,Real Sociedad,La Liga,FW,83,86,77,79,88,45,61,2600,14,9
+112,Kaoru Mitoma,Japan,Brighton,Premier League,FW,82,87,76,77,87,43,60,2300,12,8
+113,Daichi Kamada,Japan,Crystal Palace,Premier League,MF,81,73,76,81,82,63,68,2250,8,7
+114,Wataru Endo,Japan,Liverpool,Premier League,MF,81,68,61,77,74,81,82,2400,3,4
+115,Hidemasa Morita,Japan,Sporting CP,Primeira Liga,MF,80,71,67,78,79,74,75,2350,4,5
+116,Ko Itakura,Japan,Borussia Monchengladbach,Bundesliga,DF,80,69,38,70,71,82,78,2750,2,2
+117,Zion Suzuki,Japan,Parma,Serie A,GK,79,46,12,49,52,16,74,2100,0,0

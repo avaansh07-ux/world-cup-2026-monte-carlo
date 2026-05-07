@@ -1,69 +1,128 @@
 from __future__ import annotations
 
-from copy import deepcopy
-
+import numpy as np
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-from services.data_pipeline import apply_injury, get_team, load_teams
-from simulation.tournament import simulate_tournament
+from backend.model_config import SIMULATION_CONFIG
+from backend.models.repository import (
+    clear_context_cache,
+    groups_payload,
+    load_context,
+    regenerate_squads,
+    team_detail,
+    team_summary_records,
+)
+from backend.models.static_data import fc26_dataset_exists, fc26_dataset_path
+from backend.simulation.engine import run_tournament_simulation, simulate_match
 
 
 app = Flask(__name__)
 CORS(app)
 
 
-@app.get("/health")
-def healthcheck():
+def _injury_map(payload: dict) -> dict[str, list[str]]:
+    injuries = payload.get("injuries", [])
+    mapped: dict[str, list[str]] = {}
+    for item in injuries:
+        mapped.setdefault(item["teamName"], []).append(item["playerName"])
+    return mapped
+
+
+@app.get("/api/health")
+def api_health():
     return jsonify({"status": "ok"})
 
 
-@app.get("/teams")
-def teams():
-    return jsonify({"teams": load_teams()})
+@app.get("/api/groups")
+def api_groups():
+    return jsonify({"groups": groups_payload()})
 
 
-@app.get("/team-stats/<int:team_id>")
-def team_stats(team_id: int):
-    return jsonify({"team": get_team(team_id)})
+@app.get("/api/teams")
+def api_teams():
+    return jsonify(
+        {
+            "teams": team_summary_records(),
+            "meta": {
+                "dataSource": "Built from official groups, provisional squads, FC26 ratings, and tournament path simulations.",
+                "format": "48-team official group layout",
+                "defaultIterations": SIMULATION_CONFIG.default_iterations,
+            },
+        }
+    )
 
 
-@app.post("/injury")
-def injury():
+@app.get("/api/team/<team_ref>")
+def api_team(team_ref: str):
+    try:
+        return jsonify(team_detail(team_ref))
+    except KeyError:
+        return jsonify({"error": f"Unknown team: {team_ref}"}), 404
+
+
+@app.post("/api/generate-squads")
+def api_generate_squads():
+    clear_context_cache()
+    result = regenerate_squads()
+    return jsonify(
+        {
+            "status": "ok",
+            **result,
+            "fc26Available": fc26_dataset_exists(),
+            "fc26Path": fc26_dataset_path(),
+        }
+    )
+
+
+@app.post("/api/simulate")
+def api_simulate():
     payload = request.get_json(silent=True) or {}
-    team_id = payload.get("teamId")
-    player_name = payload.get("playerName")
-    if not team_id or not player_name:
-        return jsonify({"error": "teamId and playerName are required"}), 400
+    injuries = _injury_map(payload)
+    iterations = min(int(payload.get("iterations", SIMULATION_CONFIG.default_iterations)), SIMULATION_CONFIG.max_iterations)
+    context = load_context(injuries)
+    result = run_tournament_simulation(
+        context["teams"],
+        context["groups"],
+        context["players"],
+        iterations,
+    )
+    return jsonify(result)
 
-    team = get_team(int(team_id))
-    adjusted = apply_injury(team, player_name)
-    return jsonify({"team": adjusted})
 
-
-@app.post("/simulate")
-def simulate():
+@app.post("/api/simulate-match")
+def api_simulate_match():
     payload = request.get_json(silent=True) or {}
-    iterations = int(payload.get("iterations", 10000))
-    selected_team_id = payload.get("selectedTeamId")
-    injuries = payload.get("injuries", [])
+    team_a = int(payload["teamAId"])
+    team_b = int(payload["teamBId"])
+    context = load_context(_injury_map(payload))
+    teams = context["teams"]
+    rng = np.random.default_rng()
+    result = simulate_match(
+        teams[teams["team_id"] == team_a].iloc[0].to_dict(),
+        teams[teams["team_id"] == team_b].iloc[0].to_dict(),
+        context["players"],
+        rng,
+        knockout=bool(payload.get("knockout", False)),
+    )
+    return jsonify(result)
 
-    teams = [deepcopy(team) for team in load_teams()]
 
-    if selected_team_id:
-        featured_team = next(
-            (team for team in teams if int(team["id"]) == int(selected_team_id)),
-            None,
-        )
-        if featured_team and featured_team["form"] < 1.2:
-            featured_team["form"] = round(featured_team["form"] + 0.03, 3)
-
-    for injury_event in injuries:
-        for index, team in enumerate(teams):
-            if int(team["id"]) == int(injury_event["teamId"]):
-                teams[index] = apply_injury(team, injury_event["playerName"])
-
-    return jsonify(simulate_tournament(teams, iterations))
+@app.post("/api/injuries")
+def api_injuries():
+    payload = request.get_json(silent=True) or {}
+    injuries = _injury_map(payload)
+    team_id = int(payload.get("teamId"))
+    iterations = min(int(payload.get("iterations", 3000)), SIMULATION_CONFIG.max_iterations)
+    context = load_context(injuries)
+    detail = team_detail(team_id, injuries)
+    simulation = run_tournament_simulation(
+        context["teams"],
+        context["groups"],
+        context["players"],
+        iterations,
+    )
+    return jsonify({"teamProfile": detail, "simulation": simulation})
 
 
 if __name__ == "__main__":

@@ -11,6 +11,12 @@ BASE_DIR = Path(__file__).resolve().parent
 load_dotenv(BASE_DIR / ".env")
 
 
+def _cache_dir() -> Path:
+    if os.getenv("VERCEL"):
+        return Path("/tmp/world-cup-2026-cache")
+    return BASE_DIR / "data" / "cache"
+
+
 @dataclass(frozen=True)
 class Settings:
     api_football_key: str = os.getenv("API_FOOTBALL_KEY", "")
@@ -19,7 +25,7 @@ class Settings:
     )
     cache_ttl_hours: int = int(os.getenv("CACHE_TTL_HOURS", "168"))
     team_data_source: str = os.getenv("TEAM_DATA_SOURCE", "sample")
-    cache_dir: Path = BASE_DIR / "data" / "cache"
+    cache_dir: Path = _cache_dir()
 
 
 settings = Settings()

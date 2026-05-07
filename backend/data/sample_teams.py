@@ -1,6 +1,7 @@
 SAMPLE_TEAMS = [
     {
         "id": 1,
+        "api_team_id": 26,
         "name": "Argentina",
         "group": "A",
         "confederation": "CONMEBOL",
@@ -17,6 +18,7 @@ SAMPLE_TEAMS = [
     },
     {
         "id": 2,
+        "api_team_id": 2,
         "name": "France",
         "group": "A",
         "confederation": "UEFA",
@@ -33,6 +35,7 @@ SAMPLE_TEAMS = [
     },
     {
         "id": 3,
+        "api_team_id": 6,
         "name": "Brazil",
         "group": "B",
         "confederation": "CONMEBOL",
@@ -49,6 +52,7 @@ SAMPLE_TEAMS = [
     },
     {
         "id": 4,
+        "api_team_id": 10,
         "name": "England",
         "group": "B",
         "confederation": "UEFA",
@@ -65,6 +69,7 @@ SAMPLE_TEAMS = [
     },
     {
         "id": 5,
+        "api_team_id": 9,
         "name": "Spain",
         "group": "C",
         "confederation": "UEFA",
@@ -81,6 +86,7 @@ SAMPLE_TEAMS = [
     },
     {
         "id": 6,
+        "api_team_id": 27,
         "name": "Portugal",
         "group": "C",
         "confederation": "UEFA",
@@ -97,6 +103,7 @@ SAMPLE_TEAMS = [
     },
     {
         "id": 7,
+        "api_team_id": 25,
         "name": "Germany",
         "group": "D",
         "confederation": "UEFA",
@@ -113,6 +120,7 @@ SAMPLE_TEAMS = [
     },
     {
         "id": 8,
+        "api_team_id": 1118,
         "name": "Netherlands",
         "group": "D",
         "confederation": "UEFA",

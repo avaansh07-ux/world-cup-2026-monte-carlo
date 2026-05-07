@@ -1,0 +1,7 @@
+{
+  "fifa_ranking_weight": 0.35,
+  "squad_rating_weight": 0.3,
+  "attack_weight": 0.15,
+  "defense_weight": 0.1,
+  "form_weight": 0.05
+}

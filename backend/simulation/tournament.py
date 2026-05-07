@@ -6,7 +6,10 @@ from typing import Any
 
 import numpy as np
 
-from simulation.team_model import simulate_score, win_probability_snapshot
+try:
+    from .team_model import simulate_score, win_probability_snapshot
+except ImportError:
+    from simulation.team_model import simulate_score, win_probability_snapshot
 
 
 def _group_table(teams: list[dict[str, Any]], rng: np.random.Generator) -> list[dict[str, Any]]:
@@ -62,7 +65,7 @@ def _knockout_winner(
 
 
 def simulate_tournament(teams: list[dict[str, Any]], iterations: int = 10000) -> dict[str, Any]:
-    rng = np.random.default_rng(2026)
+    rng = np.random.default_rng()
     groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for team in teams:
         groups[team["group"]].append(team)

@@ -1,0 +1,17 @@
+team_id,team_name,group,fifa_rank,fifa_points,base_rating
+1,Argentina,A,1,1867,88
+2,Mexico,A,14,1669,79
+3,Japan,A,18,1621,80
+4,Morocco,A,12,1688,82
+5,France,B,2,1859,87
+6,USA,B,11,1692,80
+7,Uruguay,B,15,1665,83
+8,Croatia,B,10,1701,82
+9,Brazil,C,5,1788,86
+10,Belgium,C,3,1795,84
+11,Netherlands,C,7,1742,84
+12,Italy,C,13,1678,83
+13,England,D,4,1794,86
+14,Spain,D,8,1729,85
+15,Portugal,D,6,1756,85
+16,Germany,D,9,1716,84
