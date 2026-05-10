@@ -113,13 +113,13 @@ def calculate_team_profiles(teams_df: pd.DataFrame, players_df: pd.DataFrame) ->
         squad_component = squad_rating / 100
         form_component = min_max_scale(form_score_raw, form_min, form_max)
         if team["team_name"] in ELITE_TEAMS:
-            pedigree_component = 0.11
+            pedigree_component = 0.16
         elif team["team_name"] in CONTENDER_TEAMS:
-            pedigree_component = 0.05
+            pedigree_component = 0.03
         elif team["team_name"] in DARK_HORSE_TEAMS:
-            pedigree_component = 0.01
+            pedigree_component = -0.02
         else:
-            pedigree_component = -0.06
+            pedigree_component = -0.11
 
         weights = SIMULATION_CONFIG.weights
         overall_strength = (
@@ -141,8 +141,8 @@ def calculate_team_profiles(teams_df: pd.DataFrame, players_df: pd.DataFrame) ->
                 "goalkeeper_rating": round(goalkeeper_rating, 2),
                 "form_score": round(form_component, 3),
                 "ranking_score": round(ranking_score, 3),
-                "attack_strength": round(0.9 + attack_component + overall_strength * 0.98, 3),
-                "defense_strength": round(0.9 + defense_component + overall_strength * 0.9, 3),
+                "attack_strength": round(0.86 + attack_component + overall_strength * 1.15, 3),
+                "defense_strength": round(0.9 + defense_component + overall_strength * 1.08, 3),
                 "overall_strength": round(overall_strength, 3),
             }
         )

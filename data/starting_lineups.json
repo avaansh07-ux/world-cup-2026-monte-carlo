@@ -1,626 +1,3002 @@
 [
-  {"team_name":"United States","formation":"3-4-2-1","players":[
-    {"name":"Matt Freese","position":"GK"},
-    {"name":"Tim Ream","position":"LCB","captain":true},
-    {"name":"Chris Richards","position":"CB"},
-    {"name":"Antonee Robinson","position":"RCB"},
-    {"name":"Tim Weah","position":"RM"},
-    {"name":"Tyler Adams","position":"CM","captain":true},
-    {"name":"Tanner Tessmann","position":"CM"},
-    {"name":"Sergino Dest","position":"LM"},
-    {"name":"Christian Pulisic","position":"CAM"},
-    {"name":"Weston McKennie","position":"CAM"},
-    {"name":"Folarin Balogun","position":"ST"}
-  ]},
-  {"team_name":"Mexico","formation":"4-3-3","players":[
-    {"name":"Luis Malagon","position":"GK"},
-    {"name":"Jorge Sanchez","position":"RB"},
-    {"name":"Cesar Montes","position":"RCB"},
-    {"name":"Johan Vasquez","position":"LCB"},
-    {"name":"Jesus Gallardo","position":"LB"},
-    {"name":"Edson Alvarez","position":"CDM","captain":true},
-    {"name":"Luis Chavez","position":"CM"},
-    {"name":"Luis Romo","position":"CM"},
-    {"name":"Uriel Antuna","position":"RW"},
-    {"name":"Santiago Gimenez","position":"ST"},
-    {"name":"Julian Quinones","position":"LW"}
-  ]},
-  {"team_name":"Canada","formation":"4-4-2","players":[
-    {"name":"Dayne St. Clair","position":"GK"},
-    {"name":"Alistair Johnston","position":"RB"},
-    {"name":"Moise Bombito","position":"RCB"},
-    {"name":"Derek Cornelius","position":"LCB"},
-    {"name":"Alphonso Davies","position":"LB","captain":true},
-    {"name":"Tajon Buchanan","position":"RM"},
-    {"name":"Stephen Eustaquio","position":"CM"},
-    {"name":"Ismael Kone","position":"CM"},
-    {"name":"Jacob Shaffelburg","position":"LM"},
-    {"name":"Jonathan David","position":"ST"},
-    {"name":"Cyle Larin","position":"ST"}
-  ]},
-  {"team_name":"Panama","formation":"3-4-3","players":[
-    {"name":"Orlando Mosquera","position":"GK"},
-    {"name":"Fidel Escobar","position":"LCB","captain":true},
-    {"name":"Jose Cordoba","position":"CB"},
-    {"name":"Edgardo Farina","position":"RCB"},
-    {"name":"Michael Murillo","position":"RM"},
-    {"name":"Adalberto Carrasquilla","position":"CM"},
-    {"name":"Anibal Godoy","position":"CM","captain":true},
-    {"name":"Eric Davis","position":"LM"},
-    {"name":"Jose Fajardo","position":"RW"},
-    {"name":"Cecilio Waterman","position":"ST"},
-    {"name":"Yoel Barcenas","position":"LW"}
-  ]},
-  {"team_name":"Curacao","formation":"4-3-3","players":[
-    {"name":"Eloy Room","position":"GK","captain":true},
-    {"name":"Jurien Gaari","position":"RB"},
-    {"name":"Cuco Martina","position":"RCB"},
-    {"name":"Sherel Floranus","position":"LCB"},
-    {"name":"Vurnon Anita","position":"LB"},
-    {"name":"Leandro Bacuna","position":"CDM","captain":true},
-    {"name":"Juninho Bacuna","position":"CM"},
-    {"name":"Brandley Kuwas","position":"CM"},
-    {"name":"Rangelo Janga","position":"RW"},
-    {"name":"Kenji Gorre","position":"ST"},
-    {"name":"Jurgen Locadia","position":"LW"}
-  ]},
-  {"team_name":"Haiti","formation":"4-4-2","players":[
-    {"name":"Johnny Placide","position":"GK","captain":true},
-    {"name":"Carlens Arcus","position":"RB"},
-    {"name":"Ricardo Ade","position":"RCB"},
-    {"name":"Jean-Kevin Duverne","position":"LCB"},
-    {"name":"Alex Christian","position":"LB"},
-    {"name":"Fabrice Picault","position":"RM"},
-    {"name":"Bryan Alceus","position":"CM"},
-    {"name":"Leverton Pierre","position":"CM"},
-    {"name":"Duckens Nazon","position":"LM","captain":true},
-    {"name":"Frantzdy Pierrot","position":"ST"},
-    {"name":"Mondy Prunier","position":"ST"}
-  ]},
-  {"team_name":"Argentina","formation":"4-3-3","players":[
-    {"name":"Emiliano Martinez","position":"GK"},
-    {"name":"Nahuel Molina","position":"RB"},
-    {"name":"Cristian Romero","position":"RCB"},
-    {"name":"Lisandro Martinez","position":"LCB"},
-    {"name":"Nicolas Tagliafico","position":"LB"},
-    {"name":"Rodrigo De Paul","position":"CM"},
-    {"name":"Enzo Fernandez","position":"CM"},
-    {"name":"Alexis Mac Allister","position":"CM"},
-    {"name":"Lionel Messi","position":"RW","captain":true},
-    {"name":"Julian Alvarez","position":"ST"},
-    {"name":"Nico Gonzalez","position":"LW"}
-  ]},
-  {"team_name":"Brazil","formation":"4-2-3-1","players":[
-    {"name":"Alisson","position":"GK"},
-    {"name":"Danilo","position":"RB","captain":true},
-    {"name":"Marquinhos","position":"RCB","captain":true},
-    {"name":"Gabriel Magalhaes","position":"LCB"},
-    {"name":"Wendell","position":"LB"},
-    {"name":"Bruno Guimaraes","position":"CDM"},
-    {"name":"Joao Gomes","position":"CDM"},
-    {"name":"Raphinha","position":"RW"},
-    {"name":"Rodrygo","position":"CAM"},
-    {"name":"Vini Jr.","position":"LW"},
-    {"name":"Endrick","position":"ST"}
-  ]},
-  {"team_name":"Colombia","formation":"4-2-3-1","players":[
-    {"name":"Camilo Vargas","position":"GK"},
-    {"name":"Daniel Munoz","position":"RB"},
-    {"name":"Davinson Sanchez","position":"RCB"},
-    {"name":"Jhon Lucumi","position":"LCB"},
-    {"name":"Johan Mojica","position":"LB"},
-    {"name":"Jefferson Lerma","position":"CDM"},
-    {"name":"Richard Rios","position":"CDM"},
-    {"name":"Jhon Arias","position":"RW"},
-    {"name":"James Rodriguez","position":"CAM","captain":true},
-    {"name":"Luis Diaz","position":"LW"},
-    {"name":"Jhon Cordoba","position":"ST"}
-  ]},
-  {"team_name":"Uruguay","formation":"4-3-3","players":[
-    {"name":"Sergio Rochet","position":"GK"},
-    {"name":"Nahitan Nandez","position":"RB"},
-    {"name":"Ronald Araujo","position":"RCB"},
-    {"name":"Jose Gimenez","position":"LCB","captain":true},
-    {"name":"Mathias Olivera","position":"LB"},
-    {"name":"Federico Valverde","position":"CM","captain":true},
-    {"name":"Manuel Ugarte","position":"CM"},
-    {"name":"Nicolas de la Cruz","position":"CM"},
-    {"name":"Facundo Pellistri","position":"RW"},
-    {"name":"Darwin Nunez","position":"ST"},
-    {"name":"Maximiliano Araujo","position":"LW"}
-  ]},
-  {"team_name":"Ecuador","formation":"3-4-3","players":[
-    {"name":"Alexander Dominguez","position":"GK"},
-    {"name":"Felix Torres","position":"RCB"},
-    {"name":"Willian Pacho","position":"CB"},
-    {"name":"Piero Hincapie","position":"LCB"},
-    {"name":"Angelo Preciado","position":"RM"},
-    {"name":"Moises Caicedo","position":"CM"},
-    {"name":"Alan Franco","position":"CM"},
-    {"name":"Pervis Estupinan","position":"LM"},
-    {"name":"Kendry Paez","position":"RW"},
-    {"name":"Enner Valencia","position":"ST","captain":true},
-    {"name":"Jeremy Sarmiento","position":"LW"}
-  ]},
-  {"team_name":"Paraguay","formation":"4-2-3-1","players":[
-    {"name":"Carlos Coronel","position":"GK"},
-    {"name":"Gustavo Velazquez","position":"RB"},
-    {"name":"Fabian Balbuena","position":"RCB","captain":true},
-    {"name":"Omar Alderete","position":"LCB"},
-    {"name":"Matias Espinoza","position":"LB"},
-    {"name":"Andres Cubas","position":"CDM"},
-    {"name":"Mathias Villasanti","position":"CDM"},
-    {"name":"Miguel Almiron","position":"RW","captain":true},
-    {"name":"Julio Enciso","position":"CAM"},
-    {"name":"Ramon Sosa","position":"LW"},
-    {"name":"Adam Bareiro","position":"ST"}
-  ]},
-  {"team_name":"France","formation":"4-3-3","players":[
-    {"name":"Mike Maignan","position":"GK"},
-    {"name":"Jules Kounde","position":"RB"},
-    {"name":"William Saliba","position":"RCB"},
-    {"name":"Ibrahima Konate","position":"LCB"},
-    {"name":"Theo Hernandez","position":"LB"},
-    {"name":"Aurelien Tchouameni","position":"CM"},
-    {"name":"Eduardo Camavinga","position":"CM"},
-    {"name":"Michael Olise","position":"CAM"},
-    {"name":"Ousmane Dembele","position":"RW"},
-    {"name":"Kylian Mbappe","position":"ST","captain":true},
-    {"name":"Desire Doue","position":"LW"}
-  ]},
-  {"team_name":"England","formation":"4-2-3-1","players":[
-    {"name":"Jordan Pickford","position":"GK"},
-    {"name":"Reece James","position":"RB"},
-    {"name":"Ezri Konsa","position":"RCB"},
-    {"name":"Marc Guehi","position":"LCB"},
-    {"name":"Nico O'Reilly","position":"LB"},
-    {"name":"Elliot Anderson","position":"CDM"},
-    {"name":"Declan Rice","position":"CDM"},
-    {"name":"Bukayo Saka","position":"RW"},
-    {"name":"Jude Bellingham","position":"CAM"},
-    {"name":"Cole Palmer","position":"LW"},
-    {"name":"Harry Kane","position":"ST","captain":true}
-  ]},
-  {"team_name":"Spain","formation":"4-3-3","players":[
-    {"name":"Unai Simon","position":"GK"},
-    {"name":"Dani Carvajal","position":"RB","captain":true},
-    {"name":"Robin Le Normand","position":"RCB"},
-    {"name":"Aymeric Laporte","position":"LCB"},
-    {"name":"Marc Cucurella","position":"LB"},
-    {"name":"Rodri","position":"CDM"},
-    {"name":"Fabian Ruiz","position":"CM"},
-    {"name":"Pedri","position":"CM"},
-    {"name":"Lamine Yamal","position":"RW"},
-    {"name":"Alvaro Morata","position":"ST","captain":true},
-    {"name":"Nico Williams","position":"LW"}
-  ]},
-  {"team_name":"Germany","formation":"4-2-3-1","players":[
-    {"name":"Marc-Andre ter Stegen","position":"GK"},
-    {"name":"Joshua Kimmich","position":"RB","captain":true},
-    {"name":"Jonathan Tah","position":"RCB"},
-    {"name":"Antonio Rudiger","position":"LCB"},
-    {"name":"Maximilian Mittelstadt","position":"LB"},
-    {"name":"Robert Andrich","position":"CDM"},
-    {"name":"Ilkay Gundogan","position":"CDM","captain":true},
-    {"name":"Jamal Musiala","position":"RW"},
-    {"name":"Florian Wirtz","position":"CAM"},
-    {"name":"Leroy Sane","position":"LW"},
-    {"name":"Kai Havertz","position":"ST"}
-  ]},
-  {"team_name":"Netherlands","formation":"3-4-3","players":[
-    {"name":"Bart Verbruggen","position":"GK"},
-    {"name":"Lutsharel Geertruida","position":"RCB"},
-    {"name":"Virgil van Dijk","position":"CB","captain":true},
-    {"name":"Nathan Ake","position":"LCB"},
-    {"name":"Denzel Dumfries","position":"RM"},
-    {"name":"Ryan Gravenberch","position":"CM"},
-    {"name":"Frenkie de Jong","position":"CM"},
-    {"name":"Micky van de Ven","position":"LM"},
-    {"name":"Xavi Simons","position":"RW"},
-    {"name":"Memphis Depay","position":"ST"},
-    {"name":"Cody Gakpo","position":"LW"}
-  ]},
-  {"team_name":"Portugal","formation":"4-2-3-1","players":[
-    {"name":"Diogo Costa","position":"GK"},
-    {"name":"Diogo Dalot","position":"RB"},
-    {"name":"Ruben Dias","position":"RCB","captain":true},
-    {"name":"Goncalo Inacio","position":"LCB"},
-    {"name":"Nuno Mendes","position":"LB"},
-    {"name":"Joao Palhinha","position":"CDM"},
-    {"name":"Vitinha","position":"CDM"},
-    {"name":"Bernardo Silva","position":"RW"},
-    {"name":"Bruno Fernandes","position":"CAM","captain":true},
-    {"name":"Rafael Leao","position":"LW"},
-    {"name":"Cristiano Ronaldo","position":"ST"}
-  ]},
-  {"team_name":"Norway","formation":"4-3-3","players":[
-    {"name":"Orjan Nyland","position":"GK"},
-    {"name":"Julian Ryerson","position":"RB"},
-    {"name":"Kristoffer Ajer","position":"RCB"},
-    {"name":"Leo Ostigard","position":"LCB"},
-    {"name":"Fredrik Bjorkan","position":"LB"},
-    {"name":"Sander Berge","position":"CM"},
-    {"name":"Kristian Thorstvedt","position":"CM"},
-    {"name":"Martin Odegaard","position":"CM","captain":true},
-    {"name":"Oscar Bobb","position":"RW"},
-    {"name":"Erling Haaland","position":"ST"},
-    {"name":"Antonio Nusa","position":"LW"}
-  ]},
-  {"team_name":"Croatia","formation":"4-3-3","players":[
-    {"name":"Dominik Livakovic","position":"GK"},
-    {"name":"Josip Stanisic","position":"RB"},
-    {"name":"Josip Sutalo","position":"RCB"},
-    {"name":"Josko Gvardiol","position":"LCB"},
-    {"name":"Borna Sosa","position":"LB"},
-    {"name":"Marcelo Brozovic","position":"CDM"},
-    {"name":"Luka Modric","position":"CM","captain":true},
-    {"name":"Mateo Kovacic","position":"CM"},
-    {"name":"Mario Pasalic","position":"RW"},
-    {"name":"Ante Budimir","position":"ST"},
-    {"name":"Andrej Kramaric","position":"LW"}
-  ]},
-  {"team_name":"Belgium","formation":"4-3-3","players":[
-    {"name":"Koen Casteels","position":"GK"},
-    {"name":"Timothy Castagne","position":"RB"},
-    {"name":"Wout Faes","position":"RCB"},
-    {"name":"Arthur Theate","position":"LCB"},
-    {"name":"Maxim De Cuyper","position":"LB"},
-    {"name":"Amadou Onana","position":"CM"},
-    {"name":"Youri Tielemans","position":"CM"},
-    {"name":"Kevin De Bruyne","position":"CM","captain":true},
-    {"name":"Johan Bakayoko","position":"RW"},
-    {"name":"Romelu Lukaku","position":"ST"},
-    {"name":"Jeremy Doku","position":"LW"}
-  ]},
-  {"team_name":"Switzerland","formation":"4-2-3-1","players":[
-    {"name":"Gregor Kobel","position":"GK"},
-    {"name":"Silvan Widmer","position":"RB"},
-    {"name":"Manuel Akanji","position":"RCB","captain":true},
-    {"name":"Nico Elvedi","position":"LCB"},
-    {"name":"Ricardo Rodriguez","position":"LB"},
-    {"name":"Remo Freuler","position":"CDM"},
-    {"name":"Granit Xhaka","position":"CDM","captain":true},
-    {"name":"Dan Ndoye","position":"RW"},
-    {"name":"Fabian Rieder","position":"CAM"},
-    {"name":"Ruben Vargas","position":"LW"},
-    {"name":"Breel Embolo","position":"ST"}
-  ]},
-  {"team_name":"Scotland","formation":"3-4-2-1","players":[
-    {"name":"Angus Gunn","position":"GK"},
-    {"name":"Ryan Porteous","position":"RCB"},
-    {"name":"Jack Hendry","position":"CB"},
-    {"name":"Kieran Tierney","position":"LCB"},
-    {"name":"Anthony Ralston","position":"RM"},
-    {"name":"Billy Gilmour","position":"CM"},
-    {"name":"Callum McGregor","position":"CM","captain":true},
-    {"name":"Andy Robertson","position":"LM","captain":true},
-    {"name":"Scott McTominay","position":"CAM"},
-    {"name":"John McGinn","position":"CAM"},
-    {"name":"Che Adams","position":"ST"}
-  ]},
-  {"team_name":"Austria","formation":"4-2-3-1","players":[
-    {"name":"Patrick Pentz","position":"GK"},
-    {"name":"Stefan Posch","position":"RB"},
-    {"name":"Kevin Danso","position":"RCB"},
-    {"name":"Philipp Lienhart","position":"LCB"},
-    {"name":"Phillipp Mwene","position":"LB"},
-    {"name":"Nicolas Seiwald","position":"CDM"},
-    {"name":"Konrad Laimer","position":"CDM"},
-    {"name":"Patrick Wimmer","position":"RW"},
-    {"name":"Christoph Baumgartner","position":"CAM"},
-    {"name":"Marcel Sabitzer","position":"LW","captain":true},
-    {"name":"Michael Gregoritsch","position":"ST"}
-  ]},
-  {"team_name":"Sweden","formation":"4-3-3","players":[
-    {"name":"Robin Olsen","position":"GK"},
-    {"name":"Emil Krafth","position":"RB"},
-    {"name":"Isak Hien","position":"RCB"},
-    {"name":"Victor Lindelof","position":"LCB","captain":true},
-    {"name":"Ludwig Augustinsson","position":"LB"},
-    {"name":"Jens Cajuste","position":"CM"},
-    {"name":"Dejan Kulusevski","position":"CM"},
-    {"name":"Emil Forsberg","position":"CM","captain":true},
-    {"name":"Anthony Elanga","position":"RW"},
-    {"name":"Alexander Isak","position":"ST"},
-    {"name":"Viktor Gyokeres","position":"LW"}
-  ]},
-  {"team_name":"Turkiye","formation":"4-2-3-1","players":[
-    {"name":"Mert Gunok","position":"GK"},
-    {"name":"Mert Muldur","position":"RB"},
-    {"name":"Abdulkerim Bardakci","position":"RCB"},
-    {"name":"Merih Demiral","position":"LCB"},
-    {"name":"Ferdi Kadioglu","position":"LB"},
-    {"name":"Kaan Ayhan","position":"CDM"},
-    {"name":"Hakan Calhanoglu","position":"CDM","captain":true},
-    {"name":"Irfan Can Kahveci","position":"RW"},
-    {"name":"Arda Guler","position":"CAM"},
-    {"name":"Kenan Yildiz","position":"LW"},
-    {"name":"Baris Alper Yilmaz","position":"ST"}
-  ]},
-  {"team_name":"Czechia","formation":"3-4-2-1","players":[
-    {"name":"Matej Kovar","position":"GK"},
-    {"name":"Robin Hranac","position":"RCB"},
-    {"name":"Ladislav Krejci","position":"CB"},
-    {"name":"Stepan Chaloupek","position":"LCB"},
-    {"name":"Vladimir Coufal","position":"RM"},
-    {"name":"Tomas Soucek","position":"CM","captain":true},
-    {"name":"Antonin Barak","position":"CM"},
-    {"name":"David Jurasek","position":"LM"},
-    {"name":"Lukas Provod","position":"CAM"},
-    {"name":"Pavel Sulc","position":"CAM"},
-    {"name":"Patrik Schick","position":"ST"}
-  ]},
-  {"team_name":"Bosnia and Herzegovina","formation":"4-3-3","players":[
-    {"name":"Nikola Vasilj","position":"GK"},
-    {"name":"Amar Dedic","position":"RB"},
-    {"name":"Anel Ahmedhodzic","position":"RCB"},
-    {"name":"Dennis Hadzikadunic","position":"LCB"},
-    {"name":"Sead Kolasinac","position":"LB","captain":true},
-    {"name":"Benjamin Tahirovic","position":"CM"},
-    {"name":"Armin Gigovic","position":"CM"},
-    {"name":"Denis Huseinbasic","position":"CM"},
-    {"name":"Ermedin Demirovic","position":"RW"},
-    {"name":"Edin Dzeko","position":"ST","captain":true},
-    {"name":"Esmir Bajraktarevic","position":"LW"}
-  ]},
-  {"team_name":"Morocco","formation":"4-3-3","players":[
-    {"name":"Yassine Bounou","position":"GK"},
-    {"name":"Achraf Hakimi","position":"RB","captain":true},
-    {"name":"Nayef Aguerd","position":"RCB"},
-    {"name":"Romain Saiss","position":"LCB","captain":true},
-    {"name":"Noussair Mazraoui","position":"LB"},
-    {"name":"Sofyan Amrabat","position":"CDM"},
-    {"name":"Azzedine Ounahi","position":"CM"},
-    {"name":"Brahim Diaz","position":"CAM"},
-    {"name":"Hakim Ziyech","position":"RW"},
-    {"name":"Youssef En-Nesyri","position":"ST"},
-    {"name":"Amine Adli","position":"LW"}
-  ]},
-  {"team_name":"Senegal","formation":"4-3-3","players":[
-    {"name":"Edouard Mendy","position":"GK"},
-    {"name":"Krepin Diatta","position":"RB"},
-    {"name":"Kalidou Koulibaly","position":"RCB","captain":true},
-    {"name":"Moussa Niakhate","position":"LCB"},
-    {"name":"Ismail Jakobs","position":"LB"},
-    {"name":"Lamine Camara","position":"CM"},
-    {"name":"Pape Matar Sarr","position":"CM"},
-    {"name":"Idrissa Gueye","position":"CM"},
-    {"name":"Ismaila Sarr","position":"RW"},
-    {"name":"Nicolas Jackson","position":"ST"},
-    {"name":"Sadio Mane","position":"LW","captain":true}
-  ]},
-  {"team_name":"Egypt","formation":"4-3-3","players":[
-    {"name":"Mohamed El Shenawy","position":"GK","captain":true},
-    {"name":"Mohamed Hany","position":"RB"},
-    {"name":"Mohamed Abdelmonem","position":"RCB"},
-    {"name":"Ahmed Hegazi","position":"LCB"},
-    {"name":"Mohamed Hamdi","position":"LB"},
-    {"name":"Hamdi Fathi","position":"CDM"},
-    {"name":"Marwan Attia","position":"CM"},
-    {"name":"Trezeguet","position":"CM"},
-    {"name":"Mohamed Salah","position":"RW","captain":true},
-    {"name":"Mostafa Mohamed","position":"ST"},
-    {"name":"Omar Marmoush","position":"LW"}
-  ]},
-  {"team_name":"Ivory Coast","formation":"4-3-3","players":[
-    {"name":"Yahia Fofana","position":"GK"},
-    {"name":"Wilfried Singo","position":"RB"},
-    {"name":"Ousmane Diomande","position":"RCB"},
-    {"name":"Evan Ndicka","position":"LCB"},
-    {"name":"Ghislain Konan","position":"LB"},
-    {"name":"Franck Kessie","position":"CM","captain":true},
-    {"name":"Jean Michael Seri","position":"CM"},
-    {"name":"Ibrahim Sangare","position":"CM"},
-    {"name":"Simon Adingra","position":"RW"},
-    {"name":"Sebastien Haller","position":"ST"},
-    {"name":"Nicolas Pepe","position":"LW"}
-  ]},
-  {"team_name":"Algeria","formation":"4-3-3","players":[
-    {"name":"Anthony Mandrea","position":"GK"},
-    {"name":"Youcef Atal","position":"RB"},
-    {"name":"Aissa Mandi","position":"RCB","captain":true},
-    {"name":"Ramy Bensebaini","position":"LCB"},
-    {"name":"Rayan Ait-Nouri","position":"LB"},
-    {"name":"Nabil Bentaleb","position":"CDM"},
-    {"name":"Ismael Bennacer","position":"CM"},
-    {"name":"Houssem Aouar","position":"CM"},
-    {"name":"Riyad Mahrez","position":"RW","captain":true},
-    {"name":"Baghdad Bounedjah","position":"ST"},
-    {"name":"Said Benrahma","position":"LW"}
-  ]},
-  {"team_name":"Tunisia","formation":"4-3-3","players":[
-    {"name":"Amanallah Memmiche","position":"GK"},
-    {"name":"Wajdi Kechrida","position":"RB"},
-    {"name":"Yassine Meriah","position":"RCB","captain":true},
-    {"name":"Montassar Talbi","position":"LCB"},
-    {"name":"Ali Abdi","position":"LB"},
-    {"name":"Ellyes Skhiri","position":"CDM"},
-    {"name":"Aissa Laidouni","position":"CM"},
-    {"name":"Mohamed Ali Ben Romdhane","position":"CM"},
-    {"name":"Elias Achouri","position":"RW"},
-    {"name":"Haythem Jouini","position":"ST"},
-    {"name":"Youssef Msakni","position":"LW","captain":true}
-  ]},
-  {"team_name":"Ghana","formation":"4-2-3-1","players":[
-    {"name":"Lawrence Ati-Zigi","position":"GK"},
-    {"name":"Tariq Lamptey","position":"RB"},
-    {"name":"Mohammed Salisu","position":"RCB"},
-    {"name":"Alexander Djiku","position":"LCB"},
-    {"name":"Gideon Mensah","position":"LB"},
-    {"name":"Thomas Partey","position":"CDM","captain":true},
-    {"name":"Salis Abdul Samed","position":"CDM"},
-    {"name":"Ernest Nuamah","position":"RW"},
-    {"name":"Mohammed Kudus","position":"CAM"},
-    {"name":"Antoine Semenyo","position":"LW"},
-    {"name":"Inaki Williams","position":"ST"}
-  ]},
-  {"team_name":"South Africa","formation":"4-2-3-1","players":[
-    {"name":"Ronwen Williams","position":"GK","captain":true},
-    {"name":"Khuliso Mudau","position":"RB"},
-    {"name":"Grant Kekana","position":"RCB"},
-    {"name":"Mothobi Mvala","position":"LCB"},
-    {"name":"Aubrey Modiba","position":"LB"},
-    {"name":"Teboho Mokoena","position":"CDM"},
-    {"name":"Sphephelo Sithole","position":"CDM"},
-    {"name":"Thapelo Morena","position":"RW"},
-    {"name":"Themba Zwane","position":"CAM"},
-    {"name":"Percy Tau","position":"LW"},
-    {"name":"Evidence Makgopa","position":"ST"}
-  ]},
-  {"team_name":"Cape Verde","formation":"4-3-3","players":[
-    {"name":"Vozinha","position":"GK","captain":true},
-    {"name":"Steven Moreira","position":"RB"},
-    {"name":"Logan Costa","position":"RCB"},
-    {"name":"Roberto Lopes","position":"LCB"},
-    {"name":"Joao Paulo","position":"LB"},
-    {"name":"Kenny Rocha Santos","position":"CM"},
-    {"name":"Kevin Pina","position":"CM"},
-    {"name":"Jamiro Monteiro","position":"CM"},
-    {"name":"Ryan Mendes","position":"RW","captain":true},
-    {"name":"Bebe","position":"ST"},
-    {"name":"Jovane Cabral","position":"LW"}
-  ]},
-  {"team_name":"DR Congo","formation":"4-2-3-1","players":[
-    {"name":"Lionel Mpasi","position":"GK"},
-    {"name":"Gedeon Kalulu","position":"RB"},
-    {"name":"Chancel Mbemba","position":"RCB","captain":true},
-    {"name":"Axel Tuanzebe","position":"LCB"},
-    {"name":"Arthur Masuaku","position":"LB"},
-    {"name":"Charles Pickel","position":"CDM"},
-    {"name":"Samuel Moutoussamy","position":"CDM"},
-    {"name":"Meschak Elia","position":"RW"},
-    {"name":"Gael Kakuta","position":"CAM"},
-    {"name":"Yoane Wissa","position":"LW"},
-    {"name":"Simon Banza","position":"ST"}
-  ]},
-  {"team_name":"Japan","formation":"3-4-2-1","players":[
-    {"name":"Zion Suzuki","position":"GK"},
-    {"name":"Shogo Taniguchi","position":"RCB"},
-    {"name":"Takehiro Tomiyasu","position":"CB"},
-    {"name":"Koki Machida","position":"LCB"},
-    {"name":"Ritsu Doan","position":"RM"},
-    {"name":"Wataru Endo","position":"CM","captain":true},
-    {"name":"Hidemasa Morita","position":"CM"},
-    {"name":"Kaoru Mitoma","position":"LM"},
-    {"name":"Takefusa Kubo","position":"CAM"},
-    {"name":"Daichi Kamada","position":"CAM"},
-    {"name":"Ayase Ueda","position":"ST"}
-  ]},
-  {"team_name":"Korea Republic","formation":"4-3-3","players":[
-    {"name":"Jo Hyeon-woo","position":"GK"},
-    {"name":"Seol Young-woo","position":"RB"},
-    {"name":"Kim Min-jae","position":"RCB"},
-    {"name":"Cho Gue-sung","position":"LCB"},
-    {"name":"Kim Jin-su","position":"LB"},
-    {"name":"Hwang In-beom","position":"CM"},
-    {"name":"Park Yong-woo","position":"CM"},
-    {"name":"Lee Jae-sung","position":"CM"},
-    {"name":"Lee Kang-in","position":"RW"},
-    {"name":"Hwang Hee-chan","position":"ST"},
-    {"name":"Son Heung-min","position":"LW","captain":true}
-  ]},
-  {"team_name":"Australia","formation":"4-4-2","players":[
-    {"name":"Maty Ryan","position":"GK","captain":true},
-    {"name":"Ryan Strain","position":"RB"},
-    {"name":"Harry Souttar","position":"RCB"},
-    {"name":"Kye Rowles","position":"LCB"},
-    {"name":"Aziz Behich","position":"LB"},
-    {"name":"Martin Boyle","position":"RM"},
-    {"name":"Keanu Baccus","position":"CM"},
-    {"name":"Jackson Irvine","position":"CM","captain":true},
-    {"name":"Craig Goodwin","position":"LM"},
-    {"name":"Mitchell Duke","position":"ST"},
-    {"name":"Kusini Yengi","position":"ST"}
-  ]},
-  {"team_name":"Iran","formation":"4-4-2","players":[
-    {"name":"Alireza Beiranvand","position":"GK"},
-    {"name":"Ramin Rezaeian","position":"RB"},
-    {"name":"Hossein Kanaanizadegan","position":"RCB"},
-    {"name":"Shojae Khalilzadeh","position":"LCB"},
-    {"name":"Milad Mohammadi","position":"LB"},
-    {"name":"Alireza Jahanbakhsh","position":"RM","captain":true},
-    {"name":"Saeid Ezatolahi","position":"CM"},
-    {"name":"Saman Ghoddos","position":"CM"},
-    {"name":"Mohammad Mohebi","position":"LM"},
-    {"name":"Sardar Azmoun","position":"ST"},
-    {"name":"Mehdi Taremi","position":"ST"}
-  ]},
-  {"team_name":"Saudi Arabia","formation":"4-3-3","players":[
-    {"name":"Nawaf Al-Aqidi","position":"GK"},
-    {"name":"Saud Abdulhamid","position":"RB"},
-    {"name":"Hassan Tambakti","position":"RCB"},
-    {"name":"Ali Lajami","position":"LCB"},
-    {"name":"Sultan Al-Ghannam","position":"LB"},
-    {"name":"Mohamed Kanno","position":"CM","captain":true},
-    {"name":"Abdullah Al-Khaibari","position":"CM"},
-    {"name":"Musab Al-Juwayr","position":"CM"},
-    {"name":"Firas Al-Buraikan","position":"RW"},
-    {"name":"Saleh Al-Shehri","position":"ST"},
-    {"name":"Salem Al-Dawsari","position":"LW","captain":true}
-  ]},
-  {"team_name":"Uzbekistan","formation":"3-4-2-1","players":[
-    {"name":"Utkir Yusupov","position":"GK"},
-    {"name":"Abdukodir Khusanov","position":"RCB"},
-    {"name":"Rustam Eshmurodov","position":"CB"},
-    {"name":"Umar Ashurmatov","position":"LCB"},
-    {"name":"Azizbek Turgunboev","position":"RM"},
-    {"name":"Odiljon Hamrobekov","position":"CM"},
-    {"name":"Otabek Shukurov","position":"CM"},
-    {"name":"Farrukh Sayfiev","position":"LM"},
-    {"name":"Abbosbek Fayzullaev","position":"CAM"},
-    {"name":"Jaloliddin Masharipov","position":"CAM","captain":true},
-    {"name":"Eldor Shomurodov","position":"ST","captain":true}
-  ]},
-  {"team_name":"Qatar","formation":"4-3-3","players":[
-    {"name":"Meshaal Barsham","position":"GK"},
-    {"name":"Ro-Ro","position":"RB"},
-    {"name":"Boualem Khoukhi","position":"RCB"},
-    {"name":"Lucas Mendes","position":"LCB"},
-    {"name":"Homam Ahmed","position":"LB"},
-    {"name":"Hassan Al-Haydos","position":"CM","captain":true},
-    {"name":"Abdulaziz Hatem","position":"CM"},
-    {"name":"Karim Boudiaf","position":"CM"},
-    {"name":"Akram Afif","position":"RW"},
-    {"name":"Almoez Ali","position":"ST"},
-    {"name":"Yusuf Abdurisag","position":"LW"}
-  ]},
-  {"team_name":"Jordan","formation":"3-4-2-1","players":[
-    {"name":"Yazeed Abulaila","position":"GK"},
-    {"name":"Abdallah Nasib","position":"RCB"},
-    {"name":"Yazan Al-Arab","position":"CB","captain":true},
-    {"name":"Bara' Marei","position":"LCB"},
-    {"name":"Ehsan Haddad","position":"RM"},
-    {"name":"Nizar Al-Rashdan","position":"CM"},
-    {"name":"Noor Al-Rawabdeh","position":"CM"},
-    {"name":"Mahmoud Al-Mardi","position":"LM"},
-    {"name":"Mousa Al-Taamari","position":"CAM"},
-    {"name":"Ali Olwan","position":"CAM"},
-    {"name":"Yazan Al-Naimat","position":"ST"}
-  ]},
-  {"team_name":"Iraq","formation":"4-2-3-1","players":[
-    {"name":"Jalal Hassan","position":"GK","captain":true},
-    {"name":"Hussein Ali","position":"RB"},
-    {"name":"Saad Natiq","position":"RCB"},
-    {"name":"Rebin Sulaka","position":"LCB"},
-    {"name":"Merchas Doski","position":"LB"},
-    {"name":"Osama Rashid","position":"CDM"},
-    {"name":"Amir Al-Ammari","position":"CDM"},
-    {"name":"Ibrahim Bayesh","position":"RW"},
-    {"name":"Zidane Iqbal","position":"CAM"},
-    {"name":"Ali Jasim","position":"LW"},
-    {"name":"Aymen Hussein","position":"ST"}
-  ]},
-  {"team_name":"New Zealand","formation":"4-3-3","players":[
-    {"name":"Max Crocombe","position":"GK"},
-    {"name":"Tim Payne","position":"RB"},
-    {"name":"Michael Boxall","position":"RCB","captain":true},
-    {"name":"Bill Tuiloma","position":"LCB"},
-    {"name":"Libby Cacace","position":"LB"},
-    {"name":"Matthew Garbett","position":"CM"},
-    {"name":"Marko Stamenic","position":"CM"},
-    {"name":"Joe Bell","position":"CM"},
-    {"name":"Ben Waine","position":"RW"},
-    {"name":"Chris Wood","position":"ST","captain":true},
-    {"name":"Kosta Barbarouses","position":"LW"}
-  ]}
+  {
+    "team_name": "United States",
+    "formation": "3-4-2-1",
+    "players": [
+      {
+        "name": "Matt Freese",
+        "position": "GK",
+        "overall": 69
+      },
+      {
+        "name": "Tim Ream",
+        "position": "LCB",
+        "captain": true,
+        "overall": 72
+      },
+      {
+        "name": "Chris Richards",
+        "position": "CB",
+        "overall": 77
+      },
+      {
+        "name": "Antonee Robinson",
+        "position": "RCB",
+        "overall": 82
+      },
+      {
+        "name": "Tim Weah",
+        "position": "RM",
+        "overall": 77
+      },
+      {
+        "name": "Tyler Adams",
+        "position": "CM",
+        "captain": true,
+        "overall": 79
+      },
+      {
+        "name": "Tanner Tessmann",
+        "position": "CM",
+        "overall": 75
+      },
+      {
+        "name": "Sergino Dest",
+        "position": "LM",
+        "overall": 79
+      },
+      {
+        "name": "Christian Pulisic",
+        "position": "CAM",
+        "overall": 84
+      },
+      {
+        "name": "Weston McKennie",
+        "position": "CAM",
+        "overall": 78
+      },
+      {
+        "name": "Folarin Balogun",
+        "position": "ST",
+        "overall": 77
+      }
+    ]
+  },
+  {
+    "team_name": "Mexico",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Luis Malagon",
+        "position": "GK",
+        "overall": 79
+      },
+      {
+        "name": "Jorge Sanchez",
+        "position": "RB",
+        "overall": 73
+      },
+      {
+        "name": "Cesar Montes",
+        "position": "RCB",
+        "overall": 75
+      },
+      {
+        "name": "Johan Vasquez",
+        "position": "LCB",
+        "overall": 75
+      },
+      {
+        "name": "Jesus Gallardo",
+        "position": "LB",
+        "overall": 75
+      },
+      {
+        "name": "Edson Alvarez",
+        "position": "CDM",
+        "captain": true,
+        "overall": 78
+      },
+      {
+        "name": "Luis Chavez",
+        "position": "CM",
+        "overall": 79
+      },
+      {
+        "name": "Luis Romo",
+        "position": "CM",
+        "overall": 79
+      },
+      {
+        "name": "Uriel Antuna",
+        "position": "RW",
+        "overall": 74
+      },
+      {
+        "name": "Santiago Gimenez",
+        "position": "ST",
+        "overall": 79
+      },
+      {
+        "name": "Julian Quinones",
+        "position": "LW",
+        "overall": 80
+      }
+    ]
+  },
+  {
+    "team_name": "Canada",
+    "formation": "4-4-2",
+    "players": [
+      {
+        "name": "Dayne St. Clair",
+        "position": "GK",
+        "overall": 73
+      },
+      {
+        "name": "Alistair Johnston",
+        "position": "RB",
+        "overall": 78
+      },
+      {
+        "name": "Moise Bombito",
+        "position": "RCB",
+        "overall": 76
+      },
+      {
+        "name": "Derek Cornelius",
+        "position": "LCB",
+        "overall": 74
+      },
+      {
+        "name": "Alphonso Davies",
+        "position": "LB",
+        "captain": true,
+        "overall": 84
+      },
+      {
+        "name": "Tajon Buchanan",
+        "position": "RM",
+        "overall": 74
+      },
+      {
+        "name": "Stephen Eustaquio",
+        "position": "CM",
+        "overall": 77
+      },
+      {
+        "name": "Ismael Kone",
+        "position": "CM",
+        "overall": 72
+      },
+      {
+        "name": "Jacob Shaffelburg",
+        "position": "LM",
+        "overall": 67
+      },
+      {
+        "name": "Jonathan David",
+        "position": "ST",
+        "overall": 82
+      },
+      {
+        "name": "Cyle Larin",
+        "position": "ST",
+        "overall": 77
+      }
+    ]
+  },
+  {
+    "team_name": "Panama",
+    "formation": "3-4-3",
+    "players": [
+      {
+        "name": "Orlando Mosquera",
+        "position": "GK",
+        "overall": 70
+      },
+      {
+        "name": "Fidel Escobar",
+        "position": "LCB",
+        "captain": true,
+        "overall": 66
+      },
+      {
+        "name": "Jose Cordoba",
+        "position": "CB",
+        "overall": 68
+      },
+      {
+        "name": "Edgardo Farina",
+        "position": "RCB",
+        "overall": 66
+      },
+      {
+        "name": "Michael Murillo",
+        "position": "RM",
+        "overall": 76
+      },
+      {
+        "name": "Adalberto Carrasquilla",
+        "position": "CM",
+        "overall": 67
+      },
+      {
+        "name": "Anibal Godoy",
+        "position": "CM",
+        "captain": true,
+        "overall": 70
+      },
+      {
+        "name": "Eric Davis",
+        "position": "LM",
+        "overall": 67
+      },
+      {
+        "name": "Jose Fajardo",
+        "position": "RW",
+        "overall": 68
+      },
+      {
+        "name": "Cecilio Waterman",
+        "position": "ST",
+        "overall": 64
+      },
+      {
+        "name": "Yoel Barcenas",
+        "position": "LW",
+        "overall": 64
+      }
+    ]
+  },
+  {
+    "team_name": "Curacao",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Eloy Room",
+        "position": "GK",
+        "captain": true,
+        "overall": 62
+      },
+      {
+        "name": "Jurien Gaari",
+        "position": "RB",
+        "overall": 66
+      },
+      {
+        "name": "Cuco Martina",
+        "position": "RCB",
+        "overall": 66
+      },
+      {
+        "name": "Sherel Floranus",
+        "position": "LCB",
+        "overall": 66
+      },
+      {
+        "name": "Vurnon Anita",
+        "position": "LB",
+        "overall": 66
+      },
+      {
+        "name": "Leandro Bacuna",
+        "position": "CDM",
+        "captain": true,
+        "overall": 69
+      },
+      {
+        "name": "Juninho Bacuna",
+        "position": "CM",
+        "overall": 69
+      },
+      {
+        "name": "Brandley Kuwas",
+        "position": "CM",
+        "overall": 67
+      },
+      {
+        "name": "Rangelo Janga",
+        "position": "RW",
+        "overall": 62
+      },
+      {
+        "name": "Kenji Gorre",
+        "position": "ST",
+        "overall": 62
+      },
+      {
+        "name": "Jurgen Locadia",
+        "position": "LW",
+        "overall": 62
+      }
+    ]
+  },
+  {
+    "team_name": "Haiti",
+    "formation": "4-4-2",
+    "players": [
+      {
+        "name": "Johnny Placide",
+        "position": "GK",
+        "captain": true,
+        "overall": 69
+      },
+      {
+        "name": "Carlens Arcus",
+        "position": "RB",
+        "overall": 71
+      },
+      {
+        "name": "Ricardo Ade",
+        "position": "RCB",
+        "overall": 72
+      },
+      {
+        "name": "Jean-Kevin Duverne",
+        "position": "LCB",
+        "overall": 71
+      },
+      {
+        "name": "Alex Christian",
+        "position": "LB",
+        "overall": 66
+      },
+      {
+        "name": "Fabrice Picault",
+        "position": "RM",
+        "overall": 69
+      },
+      {
+        "name": "Bryan Alceus",
+        "position": "CM",
+        "overall": 64
+      },
+      {
+        "name": "Leverton Pierre",
+        "position": "CM",
+        "overall": 64
+      },
+      {
+        "name": "Duckens Nazon",
+        "position": "LM",
+        "captain": true,
+        "overall": 64
+      },
+      {
+        "name": "Frantzdy Pierrot",
+        "position": "ST",
+        "overall": 72
+      },
+      {
+        "name": "Mondy Prunier",
+        "position": "ST",
+        "overall": 69
+      }
+    ]
+  },
+  {
+    "team_name": "Argentina",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Emiliano Martinez",
+        "position": "GK",
+        "overall": 85
+      },
+      {
+        "name": "Nahuel Molina",
+        "position": "RB",
+        "overall": 79
+      },
+      {
+        "name": "Cristian Romero",
+        "position": "RCB",
+        "overall": 82
+      },
+      {
+        "name": "Lisandro Martinez",
+        "position": "LCB",
+        "overall": 81
+      },
+      {
+        "name": "Marcos Acuña",
+        "position": "LB",
+        "overall": 78
+      },
+      {
+        "name": "Rodrigo De Paul",
+        "position": "CM",
+        "overall": 84
+      },
+      {
+        "name": "Enzo Fernandez",
+        "position": "CM",
+        "overall": 84
+      },
+      {
+        "name": "Alexis Mac Allister",
+        "position": "CM",
+        "overall": 87
+      },
+      {
+        "name": "Lionel Messi",
+        "position": "RW",
+        "captain": true,
+        "overall": 86
+      },
+      {
+        "name": "Julian Alvarez",
+        "position": "ST",
+        "overall": 87
+      },
+      {
+        "name": "Nico Gonzalez",
+        "position": "LW",
+        "overall": 79
+      }
+    ]
+  },
+  {
+    "team_name": "Brazil",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Alisson",
+        "position": "GK",
+        "overall": 89
+      },
+      {
+        "name": "Danilo",
+        "position": "RB",
+        "captain": true,
+        "overall": 68
+      },
+      {
+        "name": "Marquinhos",
+        "position": "RCB",
+        "captain": true,
+        "overall": 87
+      },
+      {
+        "name": "Gabriel Magalhaes",
+        "position": "LCB",
+        "overall": 88
+      },
+      {
+        "name": "Carlos Augusto",
+        "position": "LB",
+        "overall": 81
+      },
+      {
+        "name": "Casemiro",
+        "position": "CDM",
+        "overall": 80
+      },
+      {
+        "name": "Joelinton",
+        "position": "CM",
+        "overall": 82
+      },
+      {
+        "name": "Bruno Guimarães",
+        "position": "CM",
+        "overall": 86
+      },
+      {
+        "name": "Raphinha",
+        "position": "RW",
+        "overall": 89
+      },
+      {
+        "name": "Cunha",
+        "position": "ST",
+        "overall": 83
+      },
+      {
+        "name": "Vini Jr.",
+        "position": "LW",
+        "overall": 89
+      }
+    ]
+  },
+  {
+    "team_name": "Colombia",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Camilo Vargas",
+        "position": "GK",
+        "overall": 78
+      },
+      {
+        "name": "Daniel Munoz",
+        "position": "RB",
+        "overall": 81
+      },
+      {
+        "name": "Davinson Sanchez",
+        "position": "RCB",
+        "overall": 82
+      },
+      {
+        "name": "Jhon Lucumi",
+        "position": "LCB",
+        "overall": 76
+      },
+      {
+        "name": "Johan Mojica",
+        "position": "LB",
+        "overall": 78
+      },
+      {
+        "name": "Jefferson Lerma",
+        "position": "CDM",
+        "overall": 77
+      },
+      {
+        "name": "Richard Rios",
+        "position": "CDM",
+        "overall": 79
+      },
+      {
+        "name": "Jhon Arias",
+        "position": "RW",
+        "overall": 78
+      },
+      {
+        "name": "James Rodriguez",
+        "position": "CAM",
+        "captain": true,
+        "overall": 64
+      },
+      {
+        "name": "Luis Diaz",
+        "position": "LW",
+        "overall": 85
+      },
+      {
+        "name": "Jhon Cordoba",
+        "position": "ST",
+        "overall": 79
+      }
+    ]
+  },
+  {
+    "team_name": "Uruguay",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Sergio Rochet",
+        "position": "GK",
+        "overall": 69
+      },
+      {
+        "name": "Nahitan Nandez",
+        "position": "RB",
+        "overall": 76
+      },
+      {
+        "name": "Ronald Araujo",
+        "position": "RCB",
+        "overall": 83
+      },
+      {
+        "name": "Jose Gimenez",
+        "position": "LCB",
+        "captain": true,
+        "overall": 83
+      },
+      {
+        "name": "Mathias Olivera",
+        "position": "LB",
+        "overall": 78
+      },
+      {
+        "name": "Federico Valverde",
+        "position": "CM",
+        "captain": true,
+        "overall": 89
+      },
+      {
+        "name": "Manuel Ugarte",
+        "position": "CM",
+        "overall": 79
+      },
+      {
+        "name": "Nicolas de la Cruz",
+        "position": "CM",
+        "overall": 70
+      },
+      {
+        "name": "Facundo Pellistri",
+        "position": "RW",
+        "overall": 73
+      },
+      {
+        "name": "Darwin Nunez",
+        "position": "ST",
+        "overall": 79
+      },
+      {
+        "name": "Maximiliano Araujo",
+        "position": "LW",
+        "overall": 77
+      }
+    ]
+  },
+  {
+    "team_name": "Ecuador",
+    "formation": "3-4-3",
+    "players": [
+      {
+        "name": "Alexander Dominguez",
+        "position": "GK",
+        "overall": 73
+      },
+      {
+        "name": "Felix Torres",
+        "position": "RCB",
+        "overall": 69
+      },
+      {
+        "name": "Willian Pacho",
+        "position": "CB",
+        "overall": 86
+      },
+      {
+        "name": "Piero Hincapie",
+        "position": "LCB",
+        "overall": 83
+      },
+      {
+        "name": "Angelo Preciado",
+        "position": "RM",
+        "overall": 75
+      },
+      {
+        "name": "Moises Caicedo",
+        "position": "CM",
+        "overall": 87
+      },
+      {
+        "name": "Alan Franco",
+        "position": "CM",
+        "overall": 70
+      },
+      {
+        "name": "Pervis Estupinan",
+        "position": "LM",
+        "overall": 79
+      },
+      {
+        "name": "Kendry Paez",
+        "position": "RW",
+        "overall": 73
+      },
+      {
+        "name": "Enner Valencia",
+        "position": "ST",
+        "captain": true,
+        "overall": 67
+      },
+      {
+        "name": "Jeremy Sarmiento",
+        "position": "LW",
+        "overall": 70
+      }
+    ]
+  },
+  {
+    "team_name": "Paraguay",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Carlos Coronel",
+        "position": "GK",
+        "overall": 72
+      },
+      {
+        "name": "Gustavo Velazquez",
+        "position": "RB",
+        "overall": 73
+      },
+      {
+        "name": "Fabian Balbuena",
+        "position": "RCB",
+        "captain": true,
+        "overall": 67
+      },
+      {
+        "name": "Omar Alderete",
+        "position": "LCB",
+        "overall": 78
+      },
+      {
+        "name": "Matias Espinoza",
+        "position": "LB",
+        "overall": 72
+      },
+      {
+        "name": "Andres Cubas",
+        "position": "CDM",
+        "overall": 74
+      },
+      {
+        "name": "Mathias Villasanti",
+        "position": "CDM",
+        "overall": 64
+      },
+      {
+        "name": "Miguel Almiron",
+        "position": "RW",
+        "captain": true,
+        "overall": 76
+      },
+      {
+        "name": "Julio Enciso",
+        "position": "CAM",
+        "overall": 73
+      },
+      {
+        "name": "Ramon Sosa",
+        "position": "LW",
+        "overall": 67
+      },
+      {
+        "name": "Adam Bareiro",
+        "position": "ST",
+        "overall": 68
+      }
+    ]
+  },
+  {
+    "team_name": "France",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Mike Maignan",
+        "position": "GK",
+        "overall": 87
+      },
+      {
+        "name": "Jules Kounde",
+        "position": "RB",
+        "overall": 87
+      },
+      {
+        "name": "William Saliba",
+        "position": "RCB",
+        "overall": 87
+      },
+      {
+        "name": "Ibrahima Konate",
+        "position": "LCB",
+        "overall": 86
+      },
+      {
+        "name": "Theo Hernandez",
+        "position": "LB",
+        "overall": 84
+      },
+      {
+        "name": "Aurelien Tchouameni",
+        "position": "CM",
+        "overall": 84
+      },
+      {
+        "name": "N'Golo Kanté",
+        "position": "CM",
+        "overall": 85
+      },
+      {
+        "name": "Michael Olise",
+        "position": "CAM",
+        "overall": 86
+      },
+      {
+        "name": "Ousmane Dembele",
+        "position": "RW",
+        "overall": 90
+      },
+      {
+        "name": "Kylian Mbappe",
+        "position": "ST",
+        "captain": true,
+        "overall": 91
+      },
+      {
+        "name": "Desire Doue",
+        "position": "LW",
+        "overall": 85
+      }
+    ]
+  },
+  {
+    "team_name": "England",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Jordan Pickford",
+        "position": "GK",
+        "overall": 84
+      },
+      {
+        "name": "Reece James",
+        "position": "RB",
+        "overall": 81
+      },
+      {
+        "name": "Ezri Konsa",
+        "position": "RCB",
+        "overall": 82
+      },
+      {
+        "name": "Marc Guehi",
+        "position": "LCB",
+        "overall": 82
+      },
+      {
+        "name": "Nico O'Reilly",
+        "position": "LB",
+        "overall": 73
+      },
+      {
+        "name": "Elliot Anderson",
+        "position": "CDM",
+        "overall": 82
+      },
+      {
+        "name": "Declan Rice",
+        "position": "CDM",
+        "overall": 87
+      },
+      {
+        "name": "Bukayo Saka",
+        "position": "RW",
+        "overall": 88
+      },
+      {
+        "name": "Jude Bellingham",
+        "position": "CAM",
+        "overall": 90
+      },
+      {
+        "name": "Cole Palmer",
+        "position": "LW",
+        "overall": 87
+      },
+      {
+        "name": "Harry Kane",
+        "position": "ST",
+        "captain": true,
+        "overall": 89
+      }
+    ]
+  },
+  {
+    "team_name": "Spain",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Unai Simon",
+        "position": "GK",
+        "overall": 85
+      },
+      {
+        "name": "Dani Carvajal",
+        "position": "RB",
+        "captain": true,
+        "overall": 85
+      },
+      {
+        "name": "Pau Cubarsí",
+        "position": "RCB",
+        "overall": 82
+      },
+      {
+        "name": "Aymeric Laporte",
+        "position": "LCB",
+        "overall": 82
+      },
+      {
+        "name": "Marc Cucurella",
+        "position": "LB",
+        "overall": 84
+      },
+      {
+        "name": "Rodri",
+        "position": "CDM",
+        "overall": 90
+      },
+      {
+        "name": "Fabian Ruiz",
+        "position": "CM",
+        "overall": 85
+      },
+      {
+        "name": "Pedri",
+        "position": "CM",
+        "overall": 89
+      },
+      {
+        "name": "Lamine Yamal",
+        "position": "RW",
+        "overall": 89
+      },
+      {
+        "name": "Alvaro Morata",
+        "position": "ST",
+        "captain": true,
+        "overall": 81
+      },
+      {
+        "name": "Nico Williams",
+        "position": "LW",
+        "overall": 86
+      }
+    ]
+  },
+  {
+    "team_name": "Germany",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Marc-Andre ter Stegen",
+        "position": "GK",
+        "overall": 86
+      },
+      {
+        "name": "Joshua Kimmich",
+        "position": "RB",
+        "captain": true,
+        "overall": 89
+      },
+      {
+        "name": "Jonathan Tah",
+        "position": "RCB",
+        "overall": 87
+      },
+      {
+        "name": "Nico Schlotterbeck",
+        "position": "LCB",
+        "overall": 85
+      },
+      {
+        "name": "David Raum",
+        "position": "LB",
+        "overall": 82
+      },
+      {
+        "name": "Leon Goretzka",
+        "position": "CDM",
+        "overall": 82
+      },
+      {
+        "name": "Pavlovic",
+        "position": "CDM",
+        "captain": true,
+        "overall": 79
+      },
+      {
+        "name": "Florian Wirtz",
+        "position": "LW",
+        "overall": 89
+      },
+      {
+        "name": "Jamal Musiala",
+        "position": "CAM",
+        "overall": 88
+      },
+      {
+        "name": "Leroy Sane",
+        "position": "RW",
+        "overall": 82
+      },
+      {
+        "name": "Kai Havertz",
+        "position": "ST",
+        "overall": 82
+      }
+    ]
+  },
+  {
+    "team_name": "Netherlands",
+    "formation": "3-4-3",
+    "players": [
+      {
+        "name": "Bart Verbruggen",
+        "position": "GK",
+        "overall": 78
+      },
+      {
+        "name": "Lutsharel Geertruida",
+        "position": "RCB",
+        "overall": 78
+      },
+      {
+        "name": "Virgil van Dijk",
+        "position": "CB",
+        "captain": true,
+        "overall": 90
+      },
+      {
+        "name": "Nathan Ake",
+        "position": "LCB",
+        "overall": 83
+      },
+      {
+        "name": "Denzel Dumfries",
+        "position": "RM",
+        "overall": 84
+      },
+      {
+        "name": "Ryan Gravenberch",
+        "position": "CM",
+        "overall": 85
+      },
+      {
+        "name": "Frenkie de Jong",
+        "position": "CM",
+        "overall": 87
+      },
+      {
+        "name": "Micky van de Ven",
+        "position": "LM",
+        "overall": 82
+      },
+      {
+        "name": "Xavi Simons",
+        "position": "RW",
+        "overall": 84
+      },
+      {
+        "name": "Memphis Depay",
+        "position": "ST",
+        "overall": 81
+      },
+      {
+        "name": "Cody Gakpo",
+        "position": "LW",
+        "overall": 84
+      }
+    ]
+  },
+  {
+    "team_name": "Portugal",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Diogo Costa",
+        "position": "GK",
+        "overall": 84
+      },
+      {
+        "name": "Diogo Dalot",
+        "position": "RB",
+        "overall": 79
+      },
+      {
+        "name": "Ruben Dias",
+        "position": "RCB",
+        "captain": true,
+        "overall": 86
+      },
+      {
+        "name": "Goncalo Inacio",
+        "position": "LCB",
+        "overall": 81
+      },
+      {
+        "name": "Nuno Mendes",
+        "position": "LB",
+        "overall": 86
+      },
+      {
+        "name": "Joao Palhinha",
+        "position": "CDM",
+        "overall": 83
+      },
+      {
+        "name": "Vitinha",
+        "position": "CDM",
+        "overall": 89
+      },
+      {
+        "name": "Bernardo Silva",
+        "position": "RW",
+        "overall": 84
+      },
+      {
+        "name": "Bruno Fernandes",
+        "position": "CAM",
+        "captain": true,
+        "overall": 87
+      },
+      {
+        "name": "Rafael Leao",
+        "position": "LW",
+        "overall": 84
+      },
+      {
+        "name": "Cristiano Ronaldo",
+        "position": "ST",
+        "overall": 85
+      }
+    ]
+  },
+  {
+    "team_name": "Norway",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Orjan Nyland",
+        "position": "GK",
+        "overall": 76
+      },
+      {
+        "name": "Julian Ryerson",
+        "position": "RB",
+        "overall": 79
+      },
+      {
+        "name": "Kristoffer Ajer",
+        "position": "RCB",
+        "overall": 75
+      },
+      {
+        "name": "Leo Ostigard",
+        "position": "LCB",
+        "overall": 73
+      },
+      {
+        "name": "Fredrik Bjorkan",
+        "position": "LB",
+        "overall": 80
+      },
+      {
+        "name": "Sander Berge",
+        "position": "CM",
+        "overall": 79
+      },
+      {
+        "name": "Kristian Thorstvedt",
+        "position": "CM",
+        "overall": 75
+      },
+      {
+        "name": "Martin Odegaard",
+        "position": "CM",
+        "captain": true,
+        "overall": 87
+      },
+      {
+        "name": "Oscar Bobb",
+        "position": "RW",
+        "overall": 72
+      },
+      {
+        "name": "Erling Haaland",
+        "position": "ST",
+        "overall": 90
+      },
+      {
+        "name": "Antonio Nusa",
+        "position": "LW",
+        "overall": 76
+      }
+    ]
+  },
+  {
+    "team_name": "Croatia",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Dominik Livakovic",
+        "position": "GK",
+        "overall": 80
+      },
+      {
+        "name": "Josip Stanisic",
+        "position": "RB",
+        "overall": 78
+      },
+      {
+        "name": "Josip Sutalo",
+        "position": "RCB",
+        "overall": 78
+      },
+      {
+        "name": "Josko Gvardiol",
+        "position": "LCB",
+        "overall": 84
+      },
+      {
+        "name": "Borna Sosa",
+        "position": "LB",
+        "overall": 73
+      },
+      {
+        "name": "Marcelo Brozovic",
+        "position": "CDM",
+        "overall": 81
+      },
+      {
+        "name": "Luka Modric",
+        "position": "CM",
+        "captain": true,
+        "overall": 83
+      },
+      {
+        "name": "Mateo Kovacic",
+        "position": "CM",
+        "overall": 83
+      },
+      {
+        "name": "Mario Pasalic",
+        "position": "RW",
+        "overall": 80
+      },
+      {
+        "name": "Ante Budimir",
+        "position": "ST",
+        "overall": 82
+      },
+      {
+        "name": "Andrej Kramaric",
+        "position": "LW",
+        "overall": 81
+      }
+    ]
+  },
+  {
+    "team_name": "Belgium",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Koen Casteels",
+        "position": "GK",
+        "overall": 82
+      },
+      {
+        "name": "Timothy Castagne",
+        "position": "RB",
+        "overall": 76
+      },
+      {
+        "name": "Wout Faes",
+        "position": "RCB",
+        "overall": 73
+      },
+      {
+        "name": "Arthur Theate",
+        "position": "LCB",
+        "overall": 80
+      },
+      {
+        "name": "Maxim De Cuyper",
+        "position": "LB",
+        "overall": 80
+      },
+      {
+        "name": "Amadou Onana",
+        "position": "CM",
+        "overall": 79
+      },
+      {
+        "name": "Youri Tielemans",
+        "position": "CM",
+        "overall": 85
+      },
+      {
+        "name": "Kevin De Bruyne",
+        "position": "CM",
+        "captain": true,
+        "overall": 87
+      },
+      {
+        "name": "Johan Bakayoko",
+        "position": "RW",
+        "overall": 78
+      },
+      {
+        "name": "Romelu Lukaku",
+        "position": "ST",
+        "overall": 84
+      },
+      {
+        "name": "Jeremy Doku",
+        "position": "LW",
+        "overall": 80
+      }
+    ]
+  },
+  {
+    "team_name": "Switzerland",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Gregor Kobel",
+        "position": "GK",
+        "overall": 86
+      },
+      {
+        "name": "Silvan Widmer",
+        "position": "RB",
+        "overall": 72
+      },
+      {
+        "name": "Manuel Akanji",
+        "position": "RCB",
+        "captain": true,
+        "overall": 82
+      },
+      {
+        "name": "Nico Elvedi",
+        "position": "LCB",
+        "overall": 77
+      },
+      {
+        "name": "Ricardo Rodriguez",
+        "position": "LB",
+        "overall": 74
+      },
+      {
+        "name": "Remo Freuler",
+        "position": "CDM",
+        "overall": 81
+      },
+      {
+        "name": "Granit Xhaka",
+        "position": "CDM",
+        "captain": true,
+        "overall": 85
+      },
+      {
+        "name": "Dan Ndoye",
+        "position": "RW",
+        "overall": 79
+      },
+      {
+        "name": "Fabian Rieder",
+        "position": "CAM",
+        "overall": 82
+      },
+      {
+        "name": "Ruben Vargas",
+        "position": "LW",
+        "overall": 75
+      },
+      {
+        "name": "Breel Embolo",
+        "position": "ST",
+        "overall": 77
+      }
+    ]
+  },
+  {
+    "team_name": "Scotland",
+    "formation": "3-4-2-1",
+    "players": [
+      {
+        "name": "Angus Gunn",
+        "position": "GK",
+        "overall": 72
+      },
+      {
+        "name": "Ryan Porteous",
+        "position": "RCB",
+        "overall": 79
+      },
+      {
+        "name": "Jack Hendry",
+        "position": "CB",
+        "overall": 74
+      },
+      {
+        "name": "Kieran Tierney",
+        "position": "LCB",
+        "overall": 77
+      },
+      {
+        "name": "Anthony Ralston",
+        "position": "RM",
+        "overall": 71
+      },
+      {
+        "name": "Billy Gilmour",
+        "position": "CM",
+        "overall": 74
+      },
+      {
+        "name": "Callum McGregor",
+        "position": "CM",
+        "captain": true,
+        "overall": 79
+      },
+      {
+        "name": "Andy Robertson",
+        "position": "LM",
+        "captain": true,
+        "overall": 82
+      },
+      {
+        "name": "Scott McTominay",
+        "position": "CAM",
+        "overall": 85
+      },
+      {
+        "name": "John McGinn",
+        "position": "CAM",
+        "overall": 81
+      },
+      {
+        "name": "Che Adams",
+        "position": "ST",
+        "overall": 77
+      }
+    ]
+  },
+  {
+    "team_name": "Austria",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Patrick Pentz",
+        "position": "GK",
+        "overall": 72
+      },
+      {
+        "name": "Stefan Posch",
+        "position": "RB",
+        "overall": 79
+      },
+      {
+        "name": "Kevin Danso",
+        "position": "RCB",
+        "overall": 79
+      },
+      {
+        "name": "Philipp Lienhart",
+        "position": "LCB",
+        "overall": 79
+      },
+      {
+        "name": "Phillipp Mwene",
+        "position": "LB",
+        "overall": 76
+      },
+      {
+        "name": "Nicolas Seiwald",
+        "position": "CDM",
+        "overall": 77
+      },
+      {
+        "name": "Konrad Laimer",
+        "position": "CDM",
+        "overall": 82
+      },
+      {
+        "name": "Patrick Wimmer",
+        "position": "RW",
+        "overall": 77
+      },
+      {
+        "name": "Christoph Baumgartner",
+        "position": "CAM",
+        "overall": 77
+      },
+      {
+        "name": "Marcel Sabitzer",
+        "position": "LW",
+        "captain": true,
+        "overall": 80
+      },
+      {
+        "name": "Michael Gregoritsch",
+        "position": "ST",
+        "overall": 75
+      }
+    ]
+  },
+  {
+    "team_name": "Sweden",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Robin Olsen",
+        "position": "GK",
+        "overall": 73
+      },
+      {
+        "name": "Emil Krafth",
+        "position": "RB",
+        "overall": 73
+      },
+      {
+        "name": "Isak Hien",
+        "position": "RCB",
+        "overall": 78
+      },
+      {
+        "name": "Victor Lindelof",
+        "position": "LCB",
+        "captain": true,
+        "overall": 75
+      },
+      {
+        "name": "Ludwig Augustinsson",
+        "position": "LB",
+        "overall": 72
+      },
+      {
+        "name": "Jens Cajuste",
+        "position": "CM",
+        "overall": 75
+      },
+      {
+        "name": "Dejan Kulusevski",
+        "position": "CM",
+        "overall": 83
+      },
+      {
+        "name": "Emil Forsberg",
+        "position": "CM",
+        "captain": true,
+        "overall": 79
+      },
+      {
+        "name": "Anthony Elanga",
+        "position": "RW",
+        "overall": 81
+      },
+      {
+        "name": "Alexander Isak",
+        "position": "ST",
+        "overall": 88
+      },
+      {
+        "name": "Viktor Gyokeres",
+        "position": "LW",
+        "overall": 87
+      }
+    ]
+  },
+  {
+    "team_name": "Turkiye",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Mert Gunok",
+        "position": "GK",
+        "overall": 78
+      },
+      {
+        "name": "Mert Muldur",
+        "position": "RB",
+        "overall": 78
+      },
+      {
+        "name": "Abdulkerim Bardakci",
+        "position": "RCB",
+        "overall": 80
+      },
+      {
+        "name": "Merih Demiral",
+        "position": "LCB",
+        "overall": 78
+      },
+      {
+        "name": "Ferdi Kadioglu",
+        "position": "LB",
+        "overall": 79
+      },
+      {
+        "name": "Kaan Ayhan",
+        "position": "CDM",
+        "overall": 76
+      },
+      {
+        "name": "Hakan Calhanoglu",
+        "position": "CDM",
+        "captain": true,
+        "overall": 86
+      },
+      {
+        "name": "Irfan Can Kahveci",
+        "position": "RW",
+        "overall": 78
+      },
+      {
+        "name": "Arda Guler",
+        "position": "CAM",
+        "overall": 81
+      },
+      {
+        "name": "Kenan Yildiz",
+        "position": "LW",
+        "overall": 79
+      },
+      {
+        "name": "Baris Alper Yilmaz",
+        "position": "ST",
+        "overall": 67
+      }
+    ]
+  },
+  {
+    "team_name": "Czechia",
+    "formation": "3-4-2-1",
+    "players": [
+      {
+        "name": "Matej Kovar",
+        "position": "GK",
+        "overall": 75
+      },
+      {
+        "name": "Robin Hranac",
+        "position": "RCB",
+        "overall": 71
+      },
+      {
+        "name": "Ladislav Krejci",
+        "position": "CB",
+        "overall": 78
+      },
+      {
+        "name": "Stepan Chaloupek",
+        "position": "LCB",
+        "overall": 70
+      },
+      {
+        "name": "Vladimir Coufal",
+        "position": "RM",
+        "overall": 73
+      },
+      {
+        "name": "Tomas Soucek",
+        "position": "CM",
+        "captain": true,
+        "overall": 78
+      },
+      {
+        "name": "Antonin Barak",
+        "position": "CM",
+        "overall": 75
+      },
+      {
+        "name": "David Jurasek",
+        "position": "LM",
+        "overall": 74
+      },
+      {
+        "name": "Lukas Provod",
+        "position": "CAM",
+        "overall": 78
+      },
+      {
+        "name": "Pavel Sulc",
+        "position": "CAM",
+        "overall": 77
+      },
+      {
+        "name": "Patrik Schick",
+        "position": "ST",
+        "overall": 85
+      }
+    ]
+  },
+  {
+    "team_name": "Bosnia and Herzegovina",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Nikola Vasilj",
+        "position": "GK",
+        "overall": 77
+      },
+      {
+        "name": "Amar Dedic",
+        "position": "RB",
+        "overall": 74
+      },
+      {
+        "name": "Anel Ahmedhodzic",
+        "position": "RCB",
+        "overall": 74
+      },
+      {
+        "name": "Dennis Hadzikadunic",
+        "position": "LCB",
+        "overall": 70
+      },
+      {
+        "name": "Sead Kolasinac",
+        "position": "LB",
+        "captain": true,
+        "overall": 79
+      },
+      {
+        "name": "Benjamin Tahirovic",
+        "position": "CM",
+        "overall": 67
+      },
+      {
+        "name": "Armin Gigovic",
+        "position": "CM",
+        "overall": 72
+      },
+      {
+        "name": "Denis Huseinbasic",
+        "position": "CM",
+        "overall": 72
+      },
+      {
+        "name": "Ermedin Demirovic",
+        "position": "RW",
+        "overall": 80
+      },
+      {
+        "name": "Edin Dzeko",
+        "position": "ST",
+        "captain": true,
+        "overall": 81
+      },
+      {
+        "name": "Esmir Bajraktarevic",
+        "position": "LW",
+        "overall": 67
+      }
+    ]
+  },
+  {
+    "team_name": "Morocco",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Yassine Bounou",
+        "position": "GK",
+        "overall": 82
+      },
+      {
+        "name": "Achraf Hakimi",
+        "position": "RB",
+        "captain": true,
+        "overall": 89
+      },
+      {
+        "name": "Nayef Aguerd",
+        "position": "RCB",
+        "overall": 81
+      },
+      {
+        "name": "Romain Saiss",
+        "position": "LCB",
+        "captain": true,
+        "overall": 79
+      },
+      {
+        "name": "Noussair Mazraoui",
+        "position": "LB",
+        "overall": 80
+      },
+      {
+        "name": "Sofyan Amrabat",
+        "position": "CDM",
+        "overall": 78
+      },
+      {
+        "name": "Azzedine Ounahi",
+        "position": "CM",
+        "overall": 76
+      },
+      {
+        "name": "Brahim Diaz",
+        "position": "CAM",
+        "overall": 82
+      },
+      {
+        "name": "Hakim Ziyech",
+        "position": "RW",
+        "overall": 78
+      },
+      {
+        "name": "Youssef En-Nesyri",
+        "position": "ST",
+        "overall": 82
+      },
+      {
+        "name": "Amine Adli",
+        "position": "LW",
+        "overall": 78
+      }
+    ]
+  },
+  {
+    "team_name": "Senegal",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Edouard Mendy",
+        "position": "GK",
+        "overall": 80
+      },
+      {
+        "name": "Krepin Diatta",
+        "position": "RB",
+        "overall": 74
+      },
+      {
+        "name": "Kalidou Koulibaly",
+        "position": "RCB",
+        "captain": true,
+        "overall": 82
+      },
+      {
+        "name": "Moussa Niakhate",
+        "position": "LCB",
+        "overall": 77
+      },
+      {
+        "name": "Ismail Jakobs",
+        "position": "LB",
+        "overall": 75
+      },
+      {
+        "name": "Lamine Camara",
+        "position": "CM",
+        "overall": 77
+      },
+      {
+        "name": "Pape Matar Sarr",
+        "position": "CM",
+        "overall": 79
+      },
+      {
+        "name": "Idrissa Gueye",
+        "position": "CM",
+        "overall": 79
+      },
+      {
+        "name": "Ismaila Sarr",
+        "position": "RW",
+        "overall": 79
+      },
+      {
+        "name": "Nicolas Jackson",
+        "position": "ST",
+        "overall": 80
+      },
+      {
+        "name": "Sadio Mane",
+        "position": "LW",
+        "captain": true,
+        "overall": 83
+      }
+    ]
+  },
+  {
+    "team_name": "Egypt",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Mohamed El Shenawy",
+        "position": "GK",
+        "captain": true,
+        "overall": 73
+      },
+      {
+        "name": "Mohamed Hany",
+        "position": "RB",
+        "overall": 91
+      },
+      {
+        "name": "Mohamed Abdelmonem",
+        "position": "RCB",
+        "overall": 74
+      },
+      {
+        "name": "Ahmed Hegazi",
+        "position": "LCB",
+        "overall": 75
+      },
+      {
+        "name": "Mohamed Hamdi",
+        "position": "LB",
+        "overall": 91
+      },
+      {
+        "name": "Hamdi Fathi",
+        "position": "CDM",
+        "overall": 70
+      },
+      {
+        "name": "Marwan Attia",
+        "position": "CM",
+        "overall": 70
+      },
+      {
+        "name": "Trezeguet",
+        "position": "CM",
+        "overall": 70
+      },
+      {
+        "name": "Mohamed Salah",
+        "position": "RW",
+        "captain": true,
+        "overall": 91
+      },
+      {
+        "name": "Mostafa Mohamed",
+        "position": "ST",
+        "overall": 73
+      },
+      {
+        "name": "Omar Marmoush",
+        "position": "LW",
+        "overall": 84
+      }
+    ]
+  },
+  {
+    "team_name": "Ivory Coast",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Yahia Fofana",
+        "position": "GK",
+        "overall": 76
+      },
+      {
+        "name": "Wilfried Singo",
+        "position": "RB",
+        "overall": 80
+      },
+      {
+        "name": "Ousmane Diomande",
+        "position": "RCB",
+        "overall": 80
+      },
+      {
+        "name": "Evan Ndicka",
+        "position": "LCB",
+        "overall": 81
+      },
+      {
+        "name": "Ghislain Konan",
+        "position": "LB",
+        "overall": 72
+      },
+      {
+        "name": "Franck Kessie",
+        "position": "CM",
+        "captain": true,
+        "overall": 80
+      },
+      {
+        "name": "Jean Michael Seri",
+        "position": "CM",
+        "overall": 69
+      },
+      {
+        "name": "Ibrahim Sangare",
+        "position": "CM",
+        "overall": 77
+      },
+      {
+        "name": "Simon Adingra",
+        "position": "RW",
+        "overall": 76
+      },
+      {
+        "name": "Sebastien Haller",
+        "position": "ST",
+        "overall": 77
+      },
+      {
+        "name": "Nicolas Pepe",
+        "position": "LW",
+        "overall": 80
+      }
+    ]
+  },
+  {
+    "team_name": "Algeria",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Anthony Mandrea",
+        "position": "GK",
+        "overall": 71
+      },
+      {
+        "name": "Youcef Atal",
+        "position": "RB",
+        "overall": 72
+      },
+      {
+        "name": "Aissa Mandi",
+        "position": "RCB",
+        "captain": true,
+        "overall": 75
+      },
+      {
+        "name": "Ramy Bensebaini",
+        "position": "LCB",
+        "overall": 79
+      },
+      {
+        "name": "Rayan Ait-Nouri",
+        "position": "LB",
+        "overall": 81
+      },
+      {
+        "name": "Nabil Bentaleb",
+        "position": "CDM",
+        "overall": 77
+      },
+      {
+        "name": "Ismael Bennacer",
+        "position": "CM",
+        "overall": 80
+      },
+      {
+        "name": "Houssem Aouar",
+        "position": "CM",
+        "overall": 77
+      },
+      {
+        "name": "Riyad Mahrez",
+        "position": "RW",
+        "captain": true,
+        "overall": 84
+      },
+      {
+        "name": "Baghdad Bounedjah",
+        "position": "ST",
+        "overall": 71
+      },
+      {
+        "name": "Said Benrahma",
+        "position": "LW",
+        "overall": 77
+      }
+    ]
+  },
+  {
+    "team_name": "Tunisia",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Amanallah Memmiche",
+        "position": "GK",
+        "overall": 70
+      },
+      {
+        "name": "Wajdi Kechrida",
+        "position": "RB",
+        "overall": 68
+      },
+      {
+        "name": "Yassine Meriah",
+        "position": "RCB",
+        "captain": true,
+        "overall": 68
+      },
+      {
+        "name": "Montassar Talbi",
+        "position": "LCB",
+        "overall": 73
+      },
+      {
+        "name": "Ali Abdi",
+        "position": "LB",
+        "overall": 76
+      },
+      {
+        "name": "Ellyes Skhiri",
+        "position": "CDM",
+        "overall": 80
+      },
+      {
+        "name": "Aissa Laidouni",
+        "position": "CM",
+        "overall": 69
+      },
+      {
+        "name": "Mohamed Ali Ben Romdhane",
+        "position": "CM",
+        "overall": 69
+      },
+      {
+        "name": "Elias Achouri",
+        "position": "RW",
+        "overall": 72
+      },
+      {
+        "name": "Haythem Jouini",
+        "position": "ST",
+        "overall": 65
+      },
+      {
+        "name": "Youssef Msakni",
+        "position": "LW",
+        "captain": true,
+        "overall": 65
+      }
+    ]
+  },
+  {
+    "team_name": "Ghana",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Lawrence Ati-Zigi",
+        "position": "GK",
+        "overall": 73
+      },
+      {
+        "name": "Tariq Lamptey",
+        "position": "RB",
+        "overall": 73
+      },
+      {
+        "name": "Mohammed Salisu",
+        "position": "RCB",
+        "overall": 80
+      },
+      {
+        "name": "Alexander Djiku",
+        "position": "LCB",
+        "overall": 77
+      },
+      {
+        "name": "Gideon Mensah",
+        "position": "LB",
+        "overall": 74
+      },
+      {
+        "name": "Thomas Partey",
+        "position": "CDM",
+        "captain": true,
+        "overall": 83
+      },
+      {
+        "name": "Salis Abdul Samed",
+        "position": "CDM",
+        "overall": 73
+      },
+      {
+        "name": "Ernest Nuamah",
+        "position": "RW",
+        "overall": 75
+      },
+      {
+        "name": "Mohammed Kudus",
+        "position": "CAM",
+        "overall": 80
+      },
+      {
+        "name": "Antoine Semenyo",
+        "position": "LW",
+        "overall": 80
+      },
+      {
+        "name": "Inaki Williams",
+        "position": "ST",
+        "overall": 83
+      }
+    ]
+  },
+  {
+    "team_name": "South Africa",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Ronwen Williams",
+        "position": "GK",
+        "captain": true,
+        "overall": 69
+      },
+      {
+        "name": "Khuliso Mudau",
+        "position": "RB",
+        "overall": 67
+      },
+      {
+        "name": "Grant Kekana",
+        "position": "RCB",
+        "overall": 67
+      },
+      {
+        "name": "Mothobi Mvala",
+        "position": "LCB",
+        "overall": 67
+      },
+      {
+        "name": "Aubrey Modiba",
+        "position": "LB",
+        "overall": 67
+      },
+      {
+        "name": "Teboho Mokoena",
+        "position": "CDM",
+        "overall": 66
+      },
+      {
+        "name": "Sphephelo Sithole",
+        "position": "CDM",
+        "overall": 65
+      },
+      {
+        "name": "Thapelo Morena",
+        "position": "RW",
+        "overall": 63
+      },
+      {
+        "name": "Themba Zwane",
+        "position": "CAM",
+        "overall": 66
+      },
+      {
+        "name": "Percy Tau",
+        "position": "LW",
+        "overall": 63
+      },
+      {
+        "name": "Evidence Makgopa",
+        "position": "ST",
+        "overall": 63
+      }
+    ]
+  },
+  {
+    "team_name": "Cape Verde",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Vozinha",
+        "position": "GK",
+        "captain": true,
+        "overall": 69
+      },
+      {
+        "name": "Steven Moreira",
+        "position": "RB",
+        "overall": 66
+      },
+      {
+        "name": "Logan Costa",
+        "position": "RCB",
+        "overall": 66
+      },
+      {
+        "name": "Roberto Lopes",
+        "position": "LCB",
+        "overall": 66
+      },
+      {
+        "name": "Joao Paulo",
+        "position": "LB",
+        "overall": 66
+      },
+      {
+        "name": "Kenny Rocha Santos",
+        "position": "CM",
+        "overall": 66
+      },
+      {
+        "name": "Kevin Pina",
+        "position": "CM",
+        "overall": 66
+      },
+      {
+        "name": "Jamiro Monteiro",
+        "position": "CM",
+        "overall": 66
+      },
+      {
+        "name": "Ryan Mendes",
+        "position": "RW",
+        "captain": true,
+        "overall": 66
+      },
+      {
+        "name": "Bebe",
+        "position": "ST",
+        "overall": 66
+      },
+      {
+        "name": "Jovane Cabral",
+        "position": "LW",
+        "overall": 66
+      }
+    ]
+  },
+  {
+    "team_name": "DR Congo",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Lionel Mpasi",
+        "position": "GK",
+        "overall": 67
+      },
+      {
+        "name": "Gedeon Kalulu",
+        "position": "RB",
+        "overall": 70
+      },
+      {
+        "name": "Chancel Mbemba",
+        "position": "RCB",
+        "captain": true,
+        "overall": 75
+      },
+      {
+        "name": "Axel Tuanzebe",
+        "position": "LCB",
+        "overall": 73
+      },
+      {
+        "name": "Arthur Masuaku",
+        "position": "LB",
+        "overall": 75
+      },
+      {
+        "name": "Charles Pickel",
+        "position": "CDM",
+        "overall": 71
+      },
+      {
+        "name": "Samuel Moutoussamy",
+        "position": "CDM",
+        "overall": 74
+      },
+      {
+        "name": "Meschak Elia",
+        "position": "RW",
+        "overall": 70
+      },
+      {
+        "name": "Gael Kakuta",
+        "position": "CAM",
+        "overall": 70
+      },
+      {
+        "name": "Yoane Wissa",
+        "position": "LW",
+        "overall": 82
+      },
+      {
+        "name": "Simon Banza",
+        "position": "ST",
+        "overall": 81
+      }
+    ]
+  },
+  {
+    "team_name": "Japan",
+    "formation": "3-4-2-1",
+    "players": [
+      {
+        "name": "Zion Suzuki",
+        "position": "GK",
+        "overall": 74
+      },
+      {
+        "name": "Shogo Taniguchi",
+        "position": "RCB",
+        "overall": 69
+      },
+      {
+        "name": "Takehiro Tomiyasu",
+        "position": "CB",
+        "overall": 71
+      },
+      {
+        "name": "Koki Machida",
+        "position": "LCB",
+        "overall": 76
+      },
+      {
+        "name": "Ritsu Doan",
+        "position": "RM",
+        "overall": 82
+      },
+      {
+        "name": "Wataru Endo",
+        "position": "CM",
+        "captain": true,
+        "overall": 79
+      },
+      {
+        "name": "Hidemasa Morita",
+        "position": "CM",
+        "overall": 79
+      },
+      {
+        "name": "Kaoru Mitoma",
+        "position": "LM",
+        "overall": 82
+      },
+      {
+        "name": "Takefusa Kubo",
+        "position": "CAM",
+        "overall": 82
+      },
+      {
+        "name": "Daichi Kamada",
+        "position": "CAM",
+        "overall": 77
+      },
+      {
+        "name": "Ayase Ueda",
+        "position": "ST",
+        "overall": 74
+      }
+    ]
+  },
+  {
+    "team_name": "Korea Republic",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Jo Hyeon-woo",
+        "position": "GK",
+        "overall": 75
+      },
+      {
+        "name": "Seol Young-woo",
+        "position": "RB",
+        "overall": 65
+      },
+      {
+        "name": "Kim Min-jae",
+        "position": "RCB",
+        "overall": 82
+      },
+      {
+        "name": "Cho Gue-sung",
+        "position": "LCB",
+        "overall": 70
+      },
+      {
+        "name": "Kim Jin-su",
+        "position": "LB",
+        "overall": 69
+      },
+      {
+        "name": "Hwang In-beom",
+        "position": "CM",
+        "overall": 77
+      },
+      {
+        "name": "Park Yong-woo",
+        "position": "CM",
+        "overall": 68
+      },
+      {
+        "name": "Lee Jae-sung",
+        "position": "CM",
+        "overall": 77
+      },
+      {
+        "name": "Lee Kang-in",
+        "position": "RW",
+        "overall": 79
+      },
+      {
+        "name": "Hwang Hee-chan",
+        "position": "ST",
+        "overall": 75
+      },
+      {
+        "name": "Son Heung-min",
+        "position": "LW",
+        "captain": true,
+        "overall": 85
+      }
+    ]
+  },
+  {
+    "team_name": "Australia",
+    "formation": "4-4-2",
+    "players": [
+      {
+        "name": "Maty Ryan",
+        "position": "GK",
+        "captain": true,
+        "overall": 78
+      },
+      {
+        "name": "Ryan Strain",
+        "position": "RB",
+        "overall": 78
+      },
+      {
+        "name": "Harry Souttar",
+        "position": "RCB",
+        "overall": 73
+      },
+      {
+        "name": "Kye Rowles",
+        "position": "LCB",
+        "overall": 71
+      },
+      {
+        "name": "Aziz Behich",
+        "position": "LB",
+        "overall": 67
+      },
+      {
+        "name": "Martin Boyle",
+        "position": "RM",
+        "overall": 71
+      },
+      {
+        "name": "Keanu Baccus",
+        "position": "CM",
+        "overall": 66
+      },
+      {
+        "name": "Jackson Irvine",
+        "position": "CM",
+        "captain": true,
+        "overall": 75
+      },
+      {
+        "name": "Craig Goodwin",
+        "position": "LM",
+        "overall": 73
+      },
+      {
+        "name": "Mitchell Duke",
+        "position": "ST",
+        "overall": 62
+      },
+      {
+        "name": "Kusini Yengi",
+        "position": "ST",
+        "overall": 65
+      }
+    ]
+  },
+  {
+    "team_name": "Iran",
+    "formation": "4-4-2",
+    "players": [
+      {
+        "name": "Alireza Beiranvand",
+        "position": "GK",
+        "overall": 71
+      },
+      {
+        "name": "Ramin Rezaeian",
+        "position": "RB",
+        "overall": 68
+      },
+      {
+        "name": "Hossein Kanaanizadegan",
+        "position": "RCB",
+        "overall": 68
+      },
+      {
+        "name": "Shojae Khalilzadeh",
+        "position": "LCB",
+        "overall": 68
+      },
+      {
+        "name": "Milad Mohammadi",
+        "position": "LB",
+        "overall": 68
+      },
+      {
+        "name": "Alireza Jahanbakhsh",
+        "position": "RM",
+        "captain": true,
+        "overall": 71
+      },
+      {
+        "name": "Saeid Ezatolahi",
+        "position": "CM",
+        "overall": 71
+      },
+      {
+        "name": "Saman Ghoddos",
+        "position": "CM",
+        "overall": 71
+      },
+      {
+        "name": "Mohammad Mohebi",
+        "position": "LM",
+        "overall": 71
+      },
+      {
+        "name": "Sardar Azmoun",
+        "position": "ST",
+        "overall": 78
+      },
+      {
+        "name": "Mehdi Taremi",
+        "position": "ST",
+        "overall": 78
+      }
+    ]
+  },
+  {
+    "team_name": "Saudi Arabia",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Nawaf Al-Aqidi",
+        "position": "GK",
+        "overall": 72
+      },
+      {
+        "name": "Saud Abdulhamid",
+        "position": "RB",
+        "overall": 75
+      },
+      {
+        "name": "Hassan Tambakti",
+        "position": "RCB",
+        "overall": 72
+      },
+      {
+        "name": "Ali Lajami",
+        "position": "LCB",
+        "overall": 70
+      },
+      {
+        "name": "Sultan Al-Ghannam",
+        "position": "LB",
+        "overall": 72
+      },
+      {
+        "name": "Mohamed Kanno",
+        "position": "CM",
+        "captain": true,
+        "overall": 72
+      },
+      {
+        "name": "Abdullah Al-Khaibari",
+        "position": "CM",
+        "overall": 72
+      },
+      {
+        "name": "Musab Al-Juwayr",
+        "position": "CM",
+        "overall": 75
+      },
+      {
+        "name": "Firas Al-Buraikan",
+        "position": "RW",
+        "overall": 75
+      },
+      {
+        "name": "Saleh Al-Shehri",
+        "position": "ST",
+        "overall": 69
+      },
+      {
+        "name": "Salem Al-Dawsari",
+        "position": "LW",
+        "captain": true,
+        "overall": 82
+      }
+    ]
+  },
+  {
+    "team_name": "Uzbekistan",
+    "formation": "3-4-2-1",
+    "players": [
+      {
+        "name": "Utkir Yusupov",
+        "position": "GK",
+        "overall": 69
+      },
+      {
+        "name": "Abdukodir Khusanov",
+        "position": "RCB",
+        "overall": 77
+      },
+      {
+        "name": "Rustam Eshmurodov",
+        "position": "CB",
+        "overall": 72
+      },
+      {
+        "name": "Umar Ashurmatov",
+        "position": "LCB",
+        "overall": 72
+      },
+      {
+        "name": "Azizbek Turgunboev",
+        "position": "RM",
+        "overall": 66
+      },
+      {
+        "name": "Odiljon Hamrobekov",
+        "position": "CM",
+        "overall": 66
+      },
+      {
+        "name": "Otabek Shukurov",
+        "position": "CM",
+        "overall": 66
+      },
+      {
+        "name": "Farrukh Sayfiev",
+        "position": "LM",
+        "overall": 66
+      },
+      {
+        "name": "Abbosbek Fayzullaev",
+        "position": "CAM",
+        "overall": 65
+      },
+      {
+        "name": "Jaloliddin Masharipov",
+        "position": "CAM",
+        "captain": true,
+        "overall": 66
+      },
+      {
+        "name": "Eldor Shomurodov",
+        "position": "ST",
+        "captain": true,
+        "overall": 74
+      }
+    ]
+  },
+  {
+    "team_name": "Qatar",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Meshaal Barsham",
+        "position": "GK",
+        "overall": 70
+      },
+      {
+        "name": "Ro-Ro",
+        "position": "RB",
+        "overall": 67
+      },
+      {
+        "name": "Boualem Khoukhi",
+        "position": "RCB",
+        "overall": 71
+      },
+      {
+        "name": "Lucas Mendes",
+        "position": "LCB",
+        "overall": 70
+      },
+      {
+        "name": "Homam Ahmed",
+        "position": "LB",
+        "overall": 68
+      },
+      {
+        "name": "Hassan Al-Haydos",
+        "position": "CM",
+        "captain": true,
+        "overall": 71
+      },
+      {
+        "name": "Abdulaziz Hatem",
+        "position": "CM",
+        "overall": 70
+      },
+      {
+        "name": "Karim Boudiaf",
+        "position": "CM",
+        "overall": 71
+      },
+      {
+        "name": "Akram Afif",
+        "position": "RW",
+        "overall": 78
+      },
+      {
+        "name": "Almoez Ali",
+        "position": "ST",
+        "overall": 74
+      },
+      {
+        "name": "Yusuf Abdurisag",
+        "position": "LW",
+        "overall": 65
+      }
+    ]
+  },
+  {
+    "team_name": "Jordan",
+    "formation": "3-4-2-1",
+    "players": [
+      {
+        "name": "Yazeed Abulaila",
+        "position": "GK",
+        "overall": 67
+      },
+      {
+        "name": "Abdallah Nasib",
+        "position": "RCB",
+        "overall": 75
+      },
+      {
+        "name": "Yazan Al-Arab",
+        "position": "CB",
+        "captain": true,
+        "overall": 75
+      },
+      {
+        "name": "Bara' Marei",
+        "position": "LCB",
+        "overall": 75
+      },
+      {
+        "name": "Ehsan Haddad",
+        "position": "RM",
+        "overall": 65
+      },
+      {
+        "name": "Nizar Al-Rashdan",
+        "position": "CM",
+        "overall": 65
+      },
+      {
+        "name": "Noor Al-Rawabdeh",
+        "position": "CM",
+        "overall": 65
+      },
+      {
+        "name": "Mahmoud Al-Mardi",
+        "position": "LM",
+        "overall": 65
+      },
+      {
+        "name": "Mousa Al-Taamari",
+        "position": "CAM",
+        "overall": 75
+      },
+      {
+        "name": "Ali Olwan",
+        "position": "CAM",
+        "overall": 65
+      },
+      {
+        "name": "Yazan Al-Naimat",
+        "position": "ST",
+        "overall": 75
+      }
+    ]
+  },
+  {
+    "team_name": "Iraq",
+    "formation": "4-2-3-1",
+    "players": [
+      {
+        "name": "Jalal Hassan",
+        "position": "GK",
+        "captain": true,
+        "overall": 69
+      },
+      {
+        "name": "Hussein Ali",
+        "position": "RB",
+        "overall": 66
+      },
+      {
+        "name": "Saad Natiq",
+        "position": "RCB",
+        "overall": 68
+      },
+      {
+        "name": "Rebin Sulaka",
+        "position": "LCB",
+        "overall": 68
+      },
+      {
+        "name": "Merchas Doski",
+        "position": "LB",
+        "overall": 68
+      },
+      {
+        "name": "Osama Rashid",
+        "position": "CDM",
+        "overall": 66
+      },
+      {
+        "name": "Amir Al-Ammari",
+        "position": "CDM",
+        "overall": 65
+      },
+      {
+        "name": "Ibrahim Bayesh",
+        "position": "RW",
+        "overall": 68
+      },
+      {
+        "name": "Zidane Iqbal",
+        "position": "CAM",
+        "overall": 68
+      },
+      {
+        "name": "Ali Jasim",
+        "position": "LW",
+        "overall": 62
+      },
+      {
+        "name": "Aymen Hussein",
+        "position": "ST",
+        "overall": 61
+      }
+    ]
+  },
+  {
+    "team_name": "New Zealand",
+    "formation": "4-3-3",
+    "players": [
+      {
+        "name": "Max Crocombe",
+        "position": "GK",
+        "overall": 65
+      },
+      {
+        "name": "Tim Payne",
+        "position": "RB",
+        "overall": 63
+      },
+      {
+        "name": "Michael Boxall",
+        "position": "RCB",
+        "captain": true,
+        "overall": 70
+      },
+      {
+        "name": "Bill Tuiloma",
+        "position": "LCB",
+        "overall": 65
+      },
+      {
+        "name": "Libby Cacace",
+        "position": "LB",
+        "overall": 72
+      },
+      {
+        "name": "Matthew Garbett",
+        "position": "CM",
+        "overall": 65
+      },
+      {
+        "name": "Marko Stamenic",
+        "position": "CM",
+        "overall": 71
+      },
+      {
+        "name": "Joe Bell",
+        "position": "CM",
+        "overall": 74
+      },
+      {
+        "name": "Ben Waine",
+        "position": "RW",
+        "overall": 62
+      },
+      {
+        "name": "Chris Wood",
+        "position": "ST",
+        "captain": true,
+        "overall": 82
+      },
+      {
+        "name": "Kosta Barbarouses",
+        "position": "LW",
+        "overall": 68
+      }
+    ]
+  }
 ]

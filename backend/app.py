@@ -14,7 +14,7 @@ from backend.models.repository import (
     team_summary_records,
 )
 from backend.models.static_data import fc26_dataset_exists, fc26_dataset_path
-from backend.simulation.engine import run_tournament_simulation, simulate_match
+from backend.simulation.engine import compare_teams, run_tournament_simulation, simulate_match
 
 
 app = Flask(__name__)
@@ -85,6 +85,7 @@ def api_simulate():
         context["teams"],
         context["groups"],
         context["players"],
+        context["startingLineups"],
         iterations,
     )
     return jsonify(result)
@@ -120,9 +121,36 @@ def api_injuries():
         context["teams"],
         context["groups"],
         context["players"],
+        context["startingLineups"],
         iterations,
     )
     return jsonify({"teamProfile": detail, "simulation": simulation})
+
+
+@app.post("/api/compare-teams")
+def api_compare_teams():
+    payload = request.get_json(silent=True) or {}
+    team_a = payload.get("teamAId")
+    team_b = payload.get("teamBId")
+    if team_a is None or team_b is None:
+        return jsonify({"error": "teamAId and teamBId are required"}), 400
+
+    injuries = _injury_map(payload)
+    iterations = min(int(payload.get("iterations", 1000)), SIMULATION_CONFIG.max_iterations)
+    context = load_context(injuries)
+    teams = context["teams"]
+    team_a_row = teams[teams["team_id"] == int(team_a)]
+    team_b_row = teams[teams["team_id"] == int(team_b)]
+    if team_a_row.empty or team_b_row.empty:
+        return jsonify({"error": "Unknown team selection"}), 404
+
+    result = compare_teams(
+        team_a_row.iloc[0].to_dict(),
+        team_b_row.iloc[0].to_dict(),
+        context["players"],
+        iterations,
+    )
+    return jsonify(result)
 
 
 if __name__ == "__main__":

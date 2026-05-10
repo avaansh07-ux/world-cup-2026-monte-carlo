@@ -62,3 +62,13 @@ export async function simulateMatch(payload) {
     }),
   );
 }
+
+export async function compareTeams(payload) {
+  return readJson(
+    await fetch(`${API_BASE_URL}/compare-teams`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }),
+  );
+}

@@ -1,0 +1,119 @@
+{
+  "Kylian Mbappé": {
+    "overall": 91,
+    "pace": 97,
+    "shooting": 90,
+    "passing": 81,
+    "dribbling": 92,
+    "defending": 37,
+    "physic": 76
+  },
+  "Michael Olise": {
+    "overall": 87,
+    "pace": 84,
+    "shooting": 82,
+    "passing": 86,
+    "dribbling": 89,
+    "defending": 55,
+    "physic": 69
+  },
+  "Lionel Messi": {
+    "overall": 86,
+    "pace": 78,
+    "shooting": 85,
+    "passing": 85,
+    "dribbling": 90,
+    "defending": 33,
+    "physic": 64
+  },
+  "Jude Bellingham": {
+    "overall": 90,
+    "pace": 80,
+    "shooting": 86,
+    "passing": 83,
+    "dribbling": 90,
+    "defending": 78,
+    "physic": 85
+  },
+  "Harry Kane": {
+    "overall": 89,
+    "pace": 64,
+    "shooting": 92,
+    "passing": 83,
+    "dribbling": 82,
+    "defending": 48,
+    "physic": 82
+  },
+  "Florian Wirtz": {
+    "overall": 89,
+    "pace": 84,
+    "shooting": 84,
+    "passing": 87,
+    "dribbling": 91,
+    "defending": 54,
+    "physic": 71
+  },
+  "Jamal Musiala": {
+    "overall": 88,
+    "pace": 80,
+    "shooting": 82,
+    "passing": 80,
+    "dribbling": 90,
+    "defending": 66,
+    "physic": 65
+  },
+  "Achraf Hakimi": {
+    "overall": 89,
+    "pace": 92,
+    "shooting": 79,
+    "passing": 82,
+    "dribbling": 83,
+    "defending": 82,
+    "physic": 79
+  },
+  "Erling Haaland": {
+    "overall": 90,
+    "pace": 86,
+    "shooting": 91,
+    "passing": 70,
+    "dribbling": 80,
+    "defending": 45,
+    "physic": 88
+  },
+  "Federico Valverde": {
+    "overall": 89,
+    "pace": 87,
+    "shooting": 84,
+    "passing": 86,
+    "dribbling": 84,
+    "defending": 80,
+    "physic": 84
+  },
+  "Luis Díaz": {
+    "overall": 85,
+    "pace": 88,
+    "shooting": 81,
+    "passing": 76,
+    "dribbling": 87,
+    "defending": 45,
+    "physic": 75
+  },
+  "Nuno Mendes": {
+    "overall": 86,
+    "pace": 92,
+    "shooting": 70,
+    "passing": 80,
+    "dribbling": 84,
+    "defending": 82,
+    "physic": 83
+  },
+  "Raphinha": {
+    "overall": 89,
+    "pace": 91,
+    "shooting": 84,
+    "passing": 85,
+    "dribbling": 87,
+    "defending": 53,
+    "physic": 75
+  }
+}
