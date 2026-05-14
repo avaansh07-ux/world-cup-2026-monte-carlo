@@ -1772,7 +1772,7 @@ export default function App() {
                   {["Round of 32", "Round of 16", "Quarter-final", "Semi-final", "Final"].map((round) => {
                     const matches =
                       round === "Final"
-                        ? [...(bracketRounds["Final"] || []), ...(bracketRounds["Bronze Final"] || [])]
+                        ? [...(bracketRounds["Final"] || []), ...(bracketRounds["Third Place Match"] || [])]
                         : bracketRounds[round] || [];
                     return (
                     <div className="round-column" key={round}>

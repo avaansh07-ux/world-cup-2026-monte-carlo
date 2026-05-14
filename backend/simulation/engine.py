@@ -642,7 +642,7 @@ def _generate_sample_bracket(
         team_match_counter[team_name] += 1
         for player_name in lineup_lookup.get(team_name, []):
             minutes_counter[(team_name, player_name)] += bronze_minutes
-    current_bracket.append({"round": "Bronze Final", **bronze_result})
+    current_bracket.append({"round": "Third Place Match", **bronze_result})
     for event in bronze_result.get("goalEvents", []):
         scorer_counter[(event["team"], event["scorer"])] += 1
         if event.get("assister"):
