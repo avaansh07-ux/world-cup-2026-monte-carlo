@@ -16,7 +16,7 @@ const simulationOptions = [
   { label: "250", value: 250 },
   { label: "1,000", value: 1000 },
   { label: "5,000", value: 5000 },
-  { label: "10,000 slower but more stable", value: 10000 },
+  { label: "10,000 slower but more accurate", value: 10000 },
 ];
 
 const emptySimulation = {
@@ -132,6 +132,57 @@ const COUNTRY_FLAGS = {
   Uzbekistan: "/flags/uzbekistan.png",
 };
 
+const COUNTRY_COLORS = {
+  Algeria: "#1f9d55",
+  Argentina: "#7ec8f5",
+  Australia: "#f0c22e",
+  Austria: "#d62828",
+  Belgium: "#d62828",
+  "Bosnia and Herzegovina": "#2563eb",
+  Brazil: "#f4c542",
+  Canada: "#d62828",
+  "Cape Verde": "#2563eb",
+  Colombia: "#f4c542",
+  "DR Congo": "#2563eb",
+  Croatia: "#d62828",
+  Curacao: "#2563eb",
+  Czechia: "#d62828",
+  Ecuador: "#f4c542",
+  Egypt: "#d62828",
+  England: "#f3f4f6",
+  France: "#2563eb",
+  Germany: "#f3f4f6",
+  Ghana: "#f3f4f6",
+  Haiti: "#2563eb",
+  Iraq: "#1f9d55",
+  Iran: "#f3f4f6",
+  Japan: "#2563eb",
+  Jordan: "#d62828",
+  "Korea Republic": "#d62828",
+  Mexico: "#1f9d55",
+  Morocco: "#d62828",
+  Netherlands: "#f97316",
+  "New Zealand": "#f3f4f6",
+  Norway: "#d62828",
+  Panama: "#d62828",
+  Paraguay: "#d62828",
+  Portugal: "#d62828",
+  Qatar: "#7a1533",
+  "Saudi Arabia": "#1f9d55",
+  Scotland: "#1e3a8a",
+  Senegal: "#1f9d55",
+  "South Africa": "#f4c542",
+  Spain: "#d62828",
+  Sweden: "#f4c542",
+  Switzerland: "#d62828",
+  Tunisia: "#d62828",
+  Turkiye: "#d62828",
+  "United States": "#1e3a8a",
+  Uruguay: "#7ec8f5",
+  Uzbekistan: "#2563eb",
+  "Ivory Coast": "#f97316",
+};
+
 const xFactorPlayers = [
   { team: "France", player: "Kylian Mbappé", position: "Forward", reason: "Game-breaking pace and finishing make France's attack elite." },
   { team: "France", player: "Michael Olise", position: "Forward", reason: "Elite technical gravity and creative vision make him Europe's most dangerous dual-threat playmaker." },
@@ -234,6 +285,40 @@ function teamSlug(value) {
 
 function countryFlagPath(teamName) {
   return COUNTRY_FLAGS[teamName] || null;
+}
+
+function resolveCountryName(teamName) {
+  const aliasMap = {
+    "IR Iran": "Iran",
+    "USA": "United States",
+    "Cabo Verde": "Cape Verde",
+    "Côte d'Ivoire": "Ivory Coast",
+  };
+  return aliasMap[teamName] || teamName;
+}
+
+function countryColor(teamName) {
+  return COUNTRY_COLORS[resolveCountryName(teamName)] || themeForTeam(teamName).accent;
+}
+
+function displayCountryColor(teamName) {
+  const color = countryColor(teamName);
+  const normalized = color.replace("#", "").toLowerCase();
+  if (normalized === "f3f4f6" || normalized === "ffffff" || normalized === "f5f5f5") {
+    return "#6b7280";
+  }
+  return color;
+}
+
+function hexToRgba(hex, alpha) {
+  const normalized = (hex || "").replace("#", "");
+  if (normalized.length !== 6) {
+    return `rgba(61, 116, 255, ${alpha})`;
+  }
+  const red = parseInt(normalized.slice(0, 2), 16);
+  const green = parseInt(normalized.slice(2, 4), 16);
+  const blue = parseInt(normalized.slice(4, 6), 16);
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 }
 
 function initials(value) {
@@ -1089,6 +1174,7 @@ export default function App() {
   const hostLocationTicker = Object.entries(hostLocations).map(([country, locations]) => ({
     country,
     locations,
+    color: countryColor(country),
   }));
   const lineupPlayers = lineupWithCoordinates(teamDetail?.startingLineup);
   const currentTeamTheme = themeForTeam(teamDetail?.team?.team_name || "");
@@ -1160,11 +1246,11 @@ export default function App() {
                 </button>
               ))}
             </div>
-            <button onClick={handleRunSimulation} disabled={running || loading}>
+            <button className="run-button" onClick={handleRunSimulation} disabled={running || loading}>
               {running ? "Simulating..." : "Run Simulation"}
             </button>
-            <button className="ghost" onClick={handleResetSimulation} disabled={running || loading}>
-              Refresh Simulation
+            <button className="reset-button" onClick={handleResetSimulation} disabled={running || loading}>
+              Reset Simulation
             </button>
           </div>
           {running ? (
@@ -1230,11 +1316,25 @@ export default function App() {
                 <div className="ticker-window">
                   <div className="ticker-track">
                     {[...hostLocationTicker, ...hostLocationTicker].map((entry, index) => (
-                      <div className="ticker-segment" key={`${entry.country}-${index}`}>
+                      <div
+                        className="ticker-segment"
+                        key={`${entry.country}-${index}`}
+                        style={{
+                          "--ticker-accent": displayCountryColor(entry.country),
+                          "--ticker-soft": hexToRgba(entry.color, 0.14),
+                        }}
+                      >
                         <span className="ticker-country">{entry.country}</span>
                         <div className="ticker-chips">
                           {entry.locations.map((location) => (
-                            <span key={`${entry.country}-${location}-${index}`} className="ticker-chip">
+                            <span
+                              key={`${entry.country}-${location}-${index}`}
+                              className="ticker-chip"
+                              style={{
+                                "--ticker-accent": displayCountryColor(entry.country),
+                                "--ticker-soft": hexToRgba(entry.color, 0.14),
+                              }}
+                            >
                               {location}
                             </span>
                           ))}
@@ -1292,7 +1392,14 @@ export default function App() {
                 <div className="awards-stack">
                   <div className="awards-grid">
                     {awardEntries.map(([label, winner]) => (
-                      <div className="award-card" key={label}>
+                      <div
+                        className="award-card"
+                        key={label}
+                        style={{
+                          "--award-accent": displayCountryColor(winner?.team || winner?.country || ""),
+                          "--award-soft": hexToRgba(countryColor(winner?.team || winner?.country || ""), 0.12),
+                        }}
+                      >
                         <span>{label}</span>
                         <strong>{winner?.player || "--"}</strong>
                         <small>{awardSubtitle(winner) || "No result"}</small>
@@ -1306,7 +1413,14 @@ export default function App() {
                     </div>
                     <div className="allstar-grid">
                       {(awards.allStarTeam || []).map((player) => (
-                        <div className="allstar-chip" key={`${player.team}-${player.player}`}>
+                        <div
+                          className="allstar-chip"
+                          key={`${player.team}-${player.player}`}
+                          style={{
+                            "--award-accent": displayCountryColor(player.team || ""),
+                            "--award-soft": hexToRgba(countryColor(player.team || ""), 0.12),
+                          }}
+                        >
                           <strong>{player.player}</strong>
                           <small>
                             {player.team} · {player.position}
@@ -1655,12 +1769,17 @@ export default function App() {
               </div>
               {simulation.sampleBracket.length ? (
                 <div className="bracket-rounds" key={simulation.simulationRunId || "empty-run"}>
-                  {["Round of 32", "Round of 16", "Quarter-final", "Semi-final", "Final"].map((round) => (
+                  {["Round of 32", "Round of 16", "Quarter-final", "Semi-final", "Final"].map((round) => {
+                    const matches =
+                      round === "Final"
+                        ? [...(bracketRounds["Final"] || []), ...(bracketRounds["Bronze Final"] || [])]
+                        : bracketRounds[round] || [];
+                    return (
                     <div className="round-column" key={round}>
                       <h3>{round}</h3>
-                      {(bracketRounds[round] || []).map((match, index) => (
+                      {matches.map((match, index) => (
                         <div className="bracket-card" key={`${round}-${index}`}>
-                          <p>{round}</p>
+                          <p>{match.round}</p>
                           <div className="match-line">
                             <span>{match.homeTeam}</span>
                             <strong>{match.homeGoals}</strong>
@@ -1674,7 +1793,7 @@ export default function App() {
                         </div>
                       ))}
                     </div>
-                  ))}
+                  )})}
                 </div>
               ) : (
                 <p className="empty-state">Run a simulation to generate a predicted bracket path.</p>

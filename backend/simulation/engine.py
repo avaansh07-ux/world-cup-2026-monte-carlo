@@ -414,8 +414,9 @@ def _play_knockout_round(
     minutes_counter: Counter[tuple[str, str]],
     team_match_counter: Counter[str],
     lineup_lookup: dict[str, list[str]],
-) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
     winners = []
+    losers = []
     bracket_rows = []
     for home, away in zip(teams[::2], teams[1::2]):
         result = simulate_match(home, away, players_df, rng, knockout=True)
@@ -425,13 +426,16 @@ def _play_knockout_round(
         for team_name in (home["team_name"], away["team_name"]):
             for player_name in lineup_lookup.get(team_name, []):
                 minutes_counter[(team_name, player_name)] += match_minutes
-        winners.append(home if result["winner"] == home["team_name"] else away)
+        winner = home if result["winner"] == home["team_name"] else away
+        loser = away if winner is home else home
+        winners.append(winner)
+        losers.append(loser)
         bracket_rows.append({"round": round_name, **result})
         for event in result.get("goalEvents", []):
             scorer_counter[(event["team"], event["scorer"])] += 1
             if event.get("assister"):
                 assist_counter[(event["team"], event["assister"])] += 1
-    return winners, bracket_rows
+    return winners, losers, bracket_rows
 
 
 def _expected_goals_fast(
@@ -622,15 +626,27 @@ def _generate_sample_bracket(
             group_results.append({**row, "group": group_name, "placement": placement})
 
     round_of_32 = _seed_knockout(group_results)
-    round_of_32_winners, bracket_rows = _play_knockout_round(round_of_32, players_df, rng, "Round of 32", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
+    round_of_32_winners, _, bracket_rows = _play_knockout_round(round_of_32, players_df, rng, "Round of 32", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
     current_bracket.extend(bracket_rows)
     round_of_16 = [round_of_32_winners[idx] for idx in ROUND_OF_16_REORDER]
-    quarterfinals, bracket_rows = _play_knockout_round(round_of_16, players_df, rng, "Round of 16", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
+    quarterfinals, _, bracket_rows = _play_knockout_round(round_of_16, players_df, rng, "Round of 16", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
     current_bracket.extend(bracket_rows)
-    semifinals, bracket_rows = _play_knockout_round(quarterfinals, players_df, rng, "Quarter-final", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
+    semifinals, _, bracket_rows = _play_knockout_round(quarterfinals, players_df, rng, "Quarter-final", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
     current_bracket.extend(bracket_rows)
-    finalists, bracket_rows = _play_knockout_round(semifinals, players_df, rng, "Semi-final", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
+    finalists, semi_losers, bracket_rows = _play_knockout_round(semifinals, players_df, rng, "Semi-final", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
     current_bracket.extend(bracket_rows)
+
+    bronze_result = simulate_match(semi_losers[0], semi_losers[1], players_df, rng, knockout=True)
+    bronze_minutes = 120 if bronze_result["regularTime"]["homeGoals"] == bronze_result["regularTime"]["awayGoals"] else 90
+    for team_name in (semi_losers[0]["team_name"], semi_losers[1]["team_name"]):
+        team_match_counter[team_name] += 1
+        for player_name in lineup_lookup.get(team_name, []):
+            minutes_counter[(team_name, player_name)] += bronze_minutes
+    current_bracket.append({"round": "Bronze Final", **bronze_result})
+    for event in bronze_result.get("goalEvents", []):
+        scorer_counter[(event["team"], event["scorer"])] += 1
+        if event.get("assister"):
+            assist_counter[(event["team"], event["assister"])] += 1
 
     final_result = simulate_match(finalists[0], finalists[1], players_df, rng, knockout=True)
     final_minutes = 120 if final_result["regularTime"]["homeGoals"] == final_result["regularTime"]["awayGoals"] else 90
