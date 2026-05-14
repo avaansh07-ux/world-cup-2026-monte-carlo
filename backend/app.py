@@ -4,17 +4,30 @@ import numpy as np
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-from backend.model_config import SIMULATION_CONFIG
-from backend.models.repository import (
-    clear_context_cache,
-    groups_payload,
-    load_context,
-    regenerate_squads,
-    team_detail,
-    team_summary_records,
-)
-from backend.models.static_data import fc26_dataset_exists, fc26_dataset_path
-from backend.simulation.engine import compare_teams, run_tournament_simulation, simulate_match
+try:
+    from backend.model_config import SIMULATION_CONFIG
+    from backend.models.repository import (
+        clear_context_cache,
+        groups_payload,
+        load_context,
+        regenerate_squads,
+        team_detail,
+        team_summary_records,
+    )
+    from backend.models.static_data import fc26_dataset_exists, fc26_dataset_path
+    from backend.simulation.engine import compare_teams, run_tournament_simulation, simulate_match
+except ModuleNotFoundError:
+    from model_config import SIMULATION_CONFIG
+    from models.repository import (
+        clear_context_cache,
+        groups_payload,
+        load_context,
+        regenerate_squads,
+        team_detail,
+        team_summary_records,
+    )
+    from models.static_data import fc26_dataset_exists, fc26_dataset_path
+    from simulation.engine import compare_teams, run_tournament_simulation, simulate_match
 
 
 app = Flask(__name__)

@@ -2,7 +2,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from backend.models.static_data import load_model_weights
+try:
+    from backend.models.static_data import load_model_weights
+except ModuleNotFoundError:
+    from models.static_data import load_model_weights
 
 
 @dataclass(frozen=True)

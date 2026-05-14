@@ -1,4 +1,10 @@
 {
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/_/backend/api/$1"
+    }
+  ],
   "experimentalServices": {
     "frontend": {
       "entrypoint": "frontend",

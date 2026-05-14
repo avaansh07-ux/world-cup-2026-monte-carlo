@@ -2,8 +2,12 @@ from __future__ import annotations
 
 import pandas as pd
 
-from backend.model_config import SIMULATION_CONFIG
-from backend.utils.normalization import min_max_scale
+try:
+    from backend.model_config import SIMULATION_CONFIG
+    from backend.utils.normalization import min_max_scale
+except ModuleNotFoundError:
+    from model_config import SIMULATION_CONFIG
+    from utils.normalization import min_max_scale
 
 
 POSITION_GROUPS = {

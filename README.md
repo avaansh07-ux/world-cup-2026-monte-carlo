@@ -1,65 +1,135 @@
-# World Cup 2026 Monte Carlo Simulation Web App
+# World Cup 2026 Monte Carlo Simulator
 
-Interactive football simulation project built with a React frontend and Flask backend. This version is intentionally static-data-first: no API keys, no live feeds, just a configurable tournament engine powered by rankings, squad ratings, and form signals.
+Interactive React + Flask web app for simulating the 2026 FIFA World Cup with a static-data-first pipeline, projected starting XIs, FC26 player ratings, cinematic bracket views, and tournament awards.
 
-## What It Does
+## Overview
 
-- Simulates a simplified 16-team World Cup thousands of times
-- Calculates probabilities for each team reaching the quarter-finals, semi-finals, final, and winning the tournament
-- Generates Poisson-based scorelines for matches
-- Estimates goal scorers from player ratings, production, minutes, and position
-- Lets you remove players in the Injury Lab and immediately recalculate outcomes
+This project models the full 48-team 2026 World Cup format:
 
-## Stack
+- 12 groups of 4
+- top 2 from each group advance automatically
+- 8 best third-place teams advance
+- Round of 32 through the Final
 
-- Frontend: React + Vite
-- Backend: Flask
-- Modeling: pandas, NumPy, SciPy
-- Data: local CSV files in [`data/`](/Users/avaanshnanda/Desktop/World%20Cup%202026/data)
+The simulator is built for fast Monte Carlo runs while still returning a detailed display bracket, scorelines, scorer output, comparison tools, and post-tournament awards.
 
-## Project Layout
+## Current Features
 
-- [`frontend/`](/Users/avaanshnanda/Desktop/World%20Cup%202026/frontend) immersive simulation UI
-- [`backend/app.py`](/Users/avaanshnanda/Desktop/World%20Cup%202026/backend/app.py:1) Flask API routes
-- [`backend/models/`](/Users/avaanshnanda/Desktop/World%20Cup%202026/backend/models) static data loading and team strength calculation
-- [`backend/simulation/engine.py`](/Users/avaanshnanda/Desktop/World%20Cup%202026/backend/simulation/engine.py:1) match and tournament simulator
-- [`backend/model_config.py`](/Users/avaanshnanda/Desktop/World%20Cup%202026/backend/model_config.py:1) simulation weights and tunable parameters
-- [`data/teams.csv`](/Users/avaanshnanda/Desktop/World%20Cup%202026/data/teams.csv:1) teams and base rankings
-- [`data/players.csv`](/Users/avaanshnanda/Desktop/World%20Cup%202026/data/players.csv:1) squad-level player dataset
-- [`data/world_cup_structure.csv`](/Users/avaanshnanda/Desktop/World%20Cup%202026/data/world_cup_structure.csv:1) group-stage structure for v1
+- Full 48-team tournament simulation
+- Team probabilities for:
+  - Round of 32
+  - Round of 16
+  - Quarter-finals
+  - Semi-finals
+  - Final
+  - Champion
+- Predicted bracket path with match cards and scorelines
+- Team Lineup tab with hardcoded projected XIs from `data/starting_lineups.json`
+- Squad Comparison tab with head-to-head odds and lineup/rating comparison
+- X-Factors tab with custom player cards, images, and FC26-style stat blocks
+- World Cup Awards section after each simulation:
+  - Golden Ball
+  - Silver Ball
+  - Bronze Ball
+  - Golden Boot
+  - Silver Boot
+  - Bronze Boot
+  - Golden Glove
+  - Best Young Player
+  - All-Star Team
+- Host nations and host cities presentation
+- Group cards with average world ranking
 
-## Current Tournament Format
+## Data Model
 
-Version 1 uses a simplified 16-team format to prove out the simulation engine quickly:
+The app is intentionally local-data-driven. No live API is required for the core simulator.
 
-- 4 groups of 4
-- Top 2 advance from each group
-- Quarter-finals, semi-finals, final
+Primary files:
 
-The project brief is set up to expand this into the full 2026 format later.
+- `data/teams.json`  
+  Canonical 48-team dataset with rankings and strength inputs.
 
-## Team Strength Model
+- `data/groups.json`  
+  Official-style 12-group tournament layout.
 
-The backend computes separate attack and defense values from weighted components:
+- `data/starting_lineups.json`  
+  Source of truth for projected starting XIs and manually edited lineup overalls.
 
-- FIFA/world ranking baseline: 25%
-- Squad quality: 35%
-- Attacking production: 15%
-- Defensive quality: 15%
-- Recent form: 10%
+- `data/x_factor_ratings.json`  
+  Overrides for key player showcase ratings in X-Factors and lineup x-factor sections.
 
-These starter weights live in [`backend/model_config.py`](/Users/avaanshnanda/Desktop/World%20Cup%202026/backend/model_config.py:1) so we can tune them without changing frontend code.
+- `data/FC26_20250921.csv`  
+  FC26 player dataset used for ratings, attributes, and enrichment.
+
+- `config/player_images.json`  
+  Player image mapping support.
+
+## Frontend
+
+Stack:
+
+- React
+- Vite
+- CSS
+
+Primary experience:
+
+- `Overview`
+- `Groups`
+- `Team Lineup`
+- `Squad Comparison`
+- `Predicted Bracket Path`
+- `X-Factors`
+
+The UI is intentionally football-first rather than dashboard-first: bold hero treatment, white match panels, dark/gold player cards, and pitch-style lineup rendering.
+
+## Backend
+
+Stack:
+
+- Flask
+- pandas
+- NumPy
+- SciPy
+
+Core responsibilities:
+
+- load and normalize static tournament/team/player data
+- compute team and lineup strength values
+- run fast Monte Carlo tournament simulations
+- generate one representative detailed bracket for UI display
+- simulate head-to-head team comparison
+- produce awards and top scorer outputs
+
+## Simulation Notes
+
+The backend runs bulk Monte Carlo simulations for probabilities, then generates a single display bracket for the UI.
+
+- Bulk run:
+  - tracks advancement counters
+  - avoids heavy per-match object construction
+  - keeps performance fast for 250 / 1,000 / 5,000 / 10,000 runs
+
+- Display bracket:
+  - includes scorelines
+  - includes knockout path rendering
+  - is selected to be representative of the aggregate probability output
+
+The knockout stage is modeled to be close to the 2026 fixed-path format, including winner/runner-up structure and third-place placement logic. It is not intended to be a random redraw after the group stage.
 
 ## API Routes
 
 - `GET /api/health`
+- `GET /api/groups`
 - `GET /api/teams`
 - `GET /api/team/<team_id>`
+- `POST /api/generate-squads`
 - `POST /api/simulate`
 - `POST /api/simulate-match`
 - `POST /api/injuries`
+- `POST /api/compare-teams`
 
-## Quick Start
+## Local Development
 
 ### Backend
 
@@ -84,23 +154,39 @@ npm run dev
 
 Frontend runs on `http://127.0.0.1:5173`.
 
-## Verified
+## Project Structure
 
-The current codebase has been smoke-tested for:
+- `frontend/`  
+  React application, tabs, layout, visual styling, and client API calls.
 
-- frontend production build with `npm run build`
-- Flask route registration
-- `GET /api/health`
-- `GET /api/teams`
-- `GET /api/team/1`
-- `POST /api/simulate`
-- `POST /api/simulate-match`
-- `POST /api/injuries`
+- `backend/app.py`  
+  Flask API routes.
 
-## Next Steps
+- `backend/models/`  
+  Data loading, team summaries, team detail payloads, and cached context.
 
-- Expand from 16 teams to the full 2026 World Cup format
-- Improve bracket rendering with round-specific visuals
-- Add richer top-scorer logic and per-player tournament stats
-- Add more realistic tie-breaking and knockout variance
-- Optionally layer in refreshed live data later without changing the frontend contract
+- `backend/simulation/engine.py`  
+  Tournament simulation engine, bracket generation, comparison logic, awards logic.
+
+- `backend/model_config.py`  
+  Tunable simulation settings and weights.
+
+- `data/`  
+  Tournament structure, teams, player data, lineups, and x-factor overrides.
+
+- `config/`  
+  Supporting config such as model weights and image mapping.
+
+## Status
+
+This repository is no longer a 16-team prototype. It currently operates as a full 48-team World Cup simulator with custom UI flows and static local data.
+
+## Deployment
+
+Production deployment:
+
+- [world-cup-2026-monte-carlo.vercel.app](https://world-cup-2026-monte-carlo.vercel.app)
+
+## About
+
+Interactive Monte Carlo simulator for the 2026 FIFA World Cup, built with Flask and React.

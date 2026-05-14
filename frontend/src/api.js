@@ -4,7 +4,7 @@ const isLocal =
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL ||
-  (isLocal ? "http://127.0.0.1:5001/api" : "/api");
+  (isLocal ? "http://127.0.0.1:5001/api" : "/_/backend/api");
 
 async function readJson(response) {
   if (!response.ok) {

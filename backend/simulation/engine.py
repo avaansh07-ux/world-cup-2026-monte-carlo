@@ -9,20 +9,55 @@ from uuid import uuid4
 import numpy as np
 import pandas as pd
 
-from backend.model_config import SIMULATION_CONFIG
+try:
+    from backend.model_config import SIMULATION_CONFIG
+except ModuleNotFoundError:
+    from model_config import SIMULATION_CONFIG
 
 YOUNG_PLAYER_CANDIDATES = {
-    "Lamine Yamal": {"team": "Spain", "position": "Forward"},
-    "Désiré Doué": {"team": "France", "position": "Forward"},
-    "Kendry Páez": {"team": "Ecuador", "position": "Forward"},
-    "Kenan Yıldız": {"team": "Turkiye", "position": "Forward"},
-    "Arda Güler": {"team": "Turkiye", "position": "Midfielder"},
-    "Antonio Nusa": {"team": "Norway", "position": "Forward"},
-    "Dário Essugo": {"team": "Portugal", "position": "Midfielder"},
+    "Lamine Yamal": {"team": "Spain", "position": "Forward", "birthYear": 2007},
+    "Désiré Doué": {"team": "France", "position": "Forward", "birthYear": 2005},
+    "Kendry Páez": {"team": "Ecuador", "position": "Forward", "birthYear": 2007},
+    "Kenan Yıldız": {"team": "Turkiye", "position": "Forward", "birthYear": 2005},
+    "Arda Güler": {"team": "Turkiye", "position": "Midfielder", "birthYear": 2005},
+    "Antonio Nusa": {"team": "Norway", "position": "Forward", "birthYear": 2005},
+    "Dário Essugo": {"team": "Portugal", "position": "Midfielder", "birthYear": 2005},
 }
 
 YOUNG_PLAYER_CUTOFF_YEAR = 2005
 _BIRTH_YEAR_LOOKUP: dict[str, int] | None = None
+
+THIRD_PLACE_ELIGIBILITY: dict[str, tuple[str, ...]] = {
+    "A": ("C", "E", "F", "H", "I"),
+    "B": ("E", "F", "G", "I", "J"),
+    "D": ("B", "E", "F", "I", "J"),
+    "E": ("A", "B", "C", "D", "F"),
+    "G": ("A", "E", "H", "I", "J"),
+    "I": ("C", "D", "F", "G", "H"),
+    "K": ("D", "E", "I", "J", "L"),
+    "L": ("E", "H", "I", "J", "K"),
+}
+
+ROUND_OF_32_MATCHES: tuple[tuple[tuple[str, int], tuple[str, int | str]], ...] = (
+    (("A", 2), ("B", 2)),          # Match 73
+    (("E", 1), ("3P", "E")),       # Match 74
+    (("F", 1), ("C", 2)),          # Match 75
+    (("C", 1), ("F", 2)),          # Match 76
+    (("I", 1), ("3P", "I")),       # Match 77
+    (("E", 2), ("I", 2)),          # Match 78
+    (("A", 1), ("3P", "A")),       # Match 79
+    (("L", 1), ("3P", "L")),       # Match 80
+    (("D", 1), ("3P", "D")),       # Match 81
+    (("G", 1), ("3P", "G")),       # Match 82
+    (("K", 2), ("L", 2)),          # Match 83
+    (("H", 1), ("J", 2)),          # Match 84
+    (("B", 1), ("3P", "B")),       # Match 85
+    (("J", 1), ("H", 2)),          # Match 86
+    (("K", 1), ("3P", "K")),       # Match 87
+    (("D", 2), ("G", 2)),          # Match 88
+)
+
+ROUND_OF_16_REORDER = (0, 2, 1, 4, 3, 5, 6, 7, 10, 11, 8, 9, 13, 15, 12, 14)
 
 
 def _normalize_name(value: str | None) -> str:
@@ -86,6 +121,37 @@ def _scorer_weights(players: pd.DataFrame) -> pd.Series:
     return weights.clip(lower=0.01)
 
 
+def _assist_weights(players: pd.DataFrame) -> pd.Series:
+    position_bonus = players["position"].map(
+        {
+            "CAM": 1.7,
+            "CM": 1.2,
+            "RW": 1.15,
+            "LW": 1.15,
+            "RM": 1.05,
+            "LM": 1.05,
+            "CF": 1.0,
+            "ST": 0.9,
+            "CDM": 0.8,
+            "RB": 0.65,
+            "LB": 0.65,
+            "RWB": 0.72,
+            "LWB": 0.72,
+            "CB": 0.2,
+            "LCB": 0.2,
+            "RCB": 0.2,
+            "GK": 0.01,
+        }
+    ).fillna(0.35)
+    weights = (
+        players["passing"] * 0.08
+        + players["dribbling"] * 0.03
+        + players["overall"] * 0.015
+        + position_bonus * 16
+    )
+    return weights.clip(lower=0.01)
+
+
 def expected_goals(team: dict[str, Any], opponent: dict[str, Any], rng: np.random.Generator) -> float:
     variance = rng.normal(1.0, SIMULATION_CONFIG.variance)
     strength_edge = team["overall_strength"] - opponent["overall_strength"]
@@ -133,18 +199,32 @@ def simulate_match(
                 penalties[team_b["team_name"]] = int(rng.integers(3, 6))
 
     scorers = []
+    goal_events = []
     for team_name, goal_count in ((team_a["team_name"], goals_a), (team_b["team_name"], goals_b)):
         team_players = players_df[(players_df["national_team"] == team_name) & (players_df["is_available"] == True)]
         if team_players.empty or goal_count == 0:
             continue
-        weights = _scorer_weights(team_players)
-        sampled = rng.choice(
-            team_players["short_name"].tolist(),
+        scorer_weights = _scorer_weights(team_players)
+        assist_weights = _assist_weights(team_players)
+        player_names = team_players["short_name"].tolist()
+        sampled_scorers = rng.choice(
+            player_names,
             size=goal_count,
             replace=True,
-            p=(weights / weights.sum()),
+            p=(scorer_weights / scorer_weights.sum()),
         )
-        scorers.extend(sampled.tolist())
+        for scorer_name in sampled_scorers.tolist():
+            assister_name = None
+            if len(player_names) > 1 and rng.random() >= 0.18:
+                assist_pool = team_players[team_players["short_name"] != scorer_name]
+                if not assist_pool.empty:
+                    pool_weights = assist_weights.loc[assist_pool.index]
+                    assister_name = rng.choice(
+                        assist_pool["short_name"].tolist(),
+                        p=(pool_weights / pool_weights.sum()),
+                    ).item()
+            scorers.append(scorer_name)
+            goal_events.append({"team": team_name, "scorer": scorer_name, "assister": assister_name})
 
     winner = None
     if goals_a > goals_b:
@@ -162,6 +242,7 @@ def simulate_match(
         "winner": winner,
         "penalties": penalties,
         "scorers": scorers,
+        "goalEvents": goal_events,
         "regularTime": {"homeGoals": regular_a, "awayGoals": regular_b},
     }
 
@@ -257,24 +338,70 @@ def _group_table(group_teams: list[dict[str, Any]], players_df: pd.DataFrame, rn
     return ordered, match_log
 
 
+def _assign_third_place_groups(
+    third_place_groups: list[str],
+) -> dict[str, str]:
+    winner_groups = [group for group, _ in THIRD_PLACE_ELIGIBILITY.items()]
+    options = {
+        winner_group: [group for group in third_place_groups if group in THIRD_PLACE_ELIGIBILITY[winner_group]]
+        for winner_group in winner_groups
+    }
+    assignment: dict[str, str] = {}
+    used: set[str] = set()
+
+    def solve(remaining_winners: list[str]) -> bool:
+        if not remaining_winners:
+            return True
+        winner_group = min(remaining_winners, key=lambda group: len([option for option in options[group] if option not in used]))
+        remaining_after = [group for group in remaining_winners if group != winner_group]
+        for third_group in sorted(options[winner_group]):
+            if third_group in used:
+                continue
+            assignment[winner_group] = third_group
+            used.add(third_group)
+            if solve(remaining_after):
+                return True
+            used.remove(third_group)
+            assignment.pop(winner_group, None)
+        return False
+
+    if not solve(winner_groups):
+        raise ValueError(f"Unable to assign third-place groups for combination: {sorted(third_place_groups)}")
+    return assignment
+
+
+def _build_round_of_32_from_group_rows(group_results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    placements: dict[str, dict[int, dict[str, Any]]] = defaultdict(dict)
+    third_place_rows = []
+    for row in group_results:
+        placements[row["group"]][row["placement"]] = row["team"]
+        if row["placement"] == 3:
+            third_place_rows.append(row)
+
+    best_third_place_groups = [
+        row["group"]
+        for row in sorted(
+            third_place_rows,
+            key=lambda row: (row["points"], row["goal_difference"], row["goals_for"], -row["team"]["fifa_rank"]),
+            reverse=True,
+        )[:8]
+    ]
+    third_assignment = _assign_third_place_groups(best_third_place_groups)
+
+    bracket: list[dict[str, Any]] = []
+    for left_slot, right_slot in ROUND_OF_32_MATCHES:
+        for group_name, placement in (left_slot, right_slot):
+            if group_name == "3P":
+                winner_group = str(placement)
+                third_group = third_assignment[winner_group]
+                bracket.append(placements[third_group][3])
+            else:
+                bracket.append(placements[group_name][int(placement)])
+    return bracket
+
+
 def _seed_knockout(group_results: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    winners = sorted(
-        [row for row in group_results if row["placement"] == 1],
-        key=lambda row: (row["points"], row["goal_difference"], row["goals_for"], -row["team"]["fifa_rank"]),
-        reverse=True,
-    )
-    runners_up = sorted(
-        [row for row in group_results if row["placement"] == 2],
-        key=lambda row: (row["points"], row["goal_difference"], row["goals_for"], -row["team"]["fifa_rank"]),
-        reverse=True,
-    )
-    third_place = sorted(
-        [row for row in group_results if row["placement"] == 3],
-        key=lambda row: (row["points"], row["goal_difference"], row["goals_for"], -row["team"]["fifa_rank"]),
-        reverse=True,
-    )[:8]
-    seeds = winners + runners_up + third_place
-    return [row["team"] for row in seeds]
+    return _build_round_of_32_from_group_rows(group_results)
 
 
 def _play_knockout_round(
@@ -283,15 +410,27 @@ def _play_knockout_round(
     rng: np.random.Generator,
     round_name: str,
     scorer_counter: Counter[str],
+    assist_counter: Counter[str],
+    minutes_counter: Counter[str],
+    team_match_counter: Counter[str],
+    lineup_lookup: dict[str, list[str]],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     winners = []
     bracket_rows = []
     for home, away in zip(teams[::2], teams[1::2]):
         result = simulate_match(home, away, players_df, rng, knockout=True)
+        match_minutes = 120 if result["regularTime"]["homeGoals"] == result["regularTime"]["awayGoals"] else 90
+        team_match_counter[home["team_name"]] += 1
+        team_match_counter[away["team_name"]] += 1
+        for team_name in (home["team_name"], away["team_name"]):
+            for player_name in lineup_lookup.get(team_name, []):
+                minutes_counter[player_name] += match_minutes
         winners.append(home if result["winner"] == home["team_name"] else away)
         bracket_rows.append({"round": round_name, **result})
-        for scorer in result["scorers"]:
-            scorer_counter[scorer] += 1
+        for event in result.get("goalEvents", []):
+            scorer_counter[event["scorer"]] += 1
+            if event.get("assister"):
+                assist_counter[event["assister"]] += 1
     return winners, bracket_rows
 
 
@@ -387,14 +526,66 @@ def _sort_group_rows(
     )
 
 
+def _build_round_of_32_indices(group_rows: list[tuple[int, int, int, int, int, str]], fifa_ranks: np.ndarray) -> list[int]:
+    placements: dict[str, dict[int, int]] = defaultdict(dict)
+    third_place_rows: list[tuple[int, int, int, int, int, str]] = []
+
+    for idx, placement, points, goal_difference, goals_for, group_name in group_rows:
+        placements[group_name][placement] = idx
+        if placement == 3:
+            third_place_rows.append((idx, placement, points, goal_difference, goals_for, group_name))
+
+    best_third_place_groups = [
+        row[5]
+        for row in sorted(
+            third_place_rows,
+            key=lambda row: (row[2], row[3], row[4], -int(fifa_ranks[row[0]])),
+            reverse=True,
+        )[:8]
+    ]
+    third_assignment = _assign_third_place_groups(best_third_place_groups)
+
+    bracket: list[int] = []
+    for left_slot, right_slot in ROUND_OF_32_MATCHES:
+        for group_name, placement in (left_slot, right_slot):
+            if group_name == "3P":
+                winner_group = str(placement)
+                third_group = third_assignment[winner_group]
+                bracket.append(placements[third_group][3])
+            else:
+                bracket.append(placements[group_name][int(placement)])
+    return bracket
+
+
 def _generate_sample_bracket(
     teams_df: pd.DataFrame,
     groups_payload: list[dict[str, Any]],
     players_df: pd.DataFrame,
+    starting_lineups: list[dict[str, Any]],
     rng: np.random.Generator,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
     team_lookup = {row["team_name"]: row for row in teams_df.to_dict(orient="records")}
+    alias_lookup: dict[str, str] = {}
+    for row in players_df[["short_name", "long_name"]].drop_duplicates("short_name").to_dict(orient="records"):
+        short_name = row.get("short_name")
+        if not short_name:
+            continue
+        for alias in (row.get("short_name"), row.get("long_name")):
+            normalized = _normalize_name(alias)
+            if normalized and normalized not in alias_lookup:
+                alias_lookup[normalized] = short_name
     scorer_counter: Counter[str] = Counter()
+    assist_counter: Counter[str] = Counter()
+    minutes_counter: Counter[str] = Counter()
+    team_match_counter: Counter[str] = Counter()
+    lineup_lookup = {
+        entry["team_name"]: [
+            alias_lookup.get(_normalize_name(player.get("name")), player.get("name"))
+            for player in entry.get("players", [])
+            if player.get("name")
+        ]
+        for entry in starting_lineups
+    }
     current_bracket: list[dict[str, Any]] = []
     current_groups: list[dict[str, Any]] = []
     group_results: list[dict[str, Any]] = []
@@ -418,25 +609,40 @@ def _generate_sample_bracket(
             }
         )
         for match in match_log:
-            for scorer in match.get("scorers", []):
-                scorer_counter[scorer] += 1
+            team_match_counter[match.get("homeTeam")] += 1
+            team_match_counter[match.get("awayTeam")] += 1
+            for team_name in (match.get("homeTeam"), match.get("awayTeam")):
+                for player_name in lineup_lookup.get(team_name, []):
+                    minutes_counter[player_name] += 90
+            for event in match.get("goalEvents", []):
+                scorer_counter[event["scorer"]] += 1
+                if event.get("assister"):
+                    assist_counter[event["assister"]] += 1
         for placement, row in enumerate(table, start=1):
             group_results.append({**row, "group": group_name, "placement": placement})
 
     round_of_32 = _seed_knockout(group_results)
-    round_of_16, bracket_rows = _play_knockout_round(round_of_32, players_df, rng, "Round of 32", scorer_counter)
+    round_of_32_winners, bracket_rows = _play_knockout_round(round_of_32, players_df, rng, "Round of 32", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
     current_bracket.extend(bracket_rows)
-    quarterfinals, bracket_rows = _play_knockout_round(round_of_16, players_df, rng, "Round of 16", scorer_counter)
+    round_of_16 = [round_of_32_winners[idx] for idx in ROUND_OF_16_REORDER]
+    quarterfinals, bracket_rows = _play_knockout_round(round_of_16, players_df, rng, "Round of 16", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
     current_bracket.extend(bracket_rows)
-    semifinals, bracket_rows = _play_knockout_round(quarterfinals, players_df, rng, "Quarter-final", scorer_counter)
+    semifinals, bracket_rows = _play_knockout_round(quarterfinals, players_df, rng, "Quarter-final", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
     current_bracket.extend(bracket_rows)
-    finalists, bracket_rows = _play_knockout_round(semifinals, players_df, rng, "Semi-final", scorer_counter)
+    finalists, bracket_rows = _play_knockout_round(semifinals, players_df, rng, "Semi-final", scorer_counter, assist_counter, minutes_counter, team_match_counter, lineup_lookup)
     current_bracket.extend(bracket_rows)
 
     final_result = simulate_match(finalists[0], finalists[1], players_df, rng, knockout=True)
+    final_minutes = 120 if final_result["regularTime"]["homeGoals"] == final_result["regularTime"]["awayGoals"] else 90
+    for team_name in (finalists[0]["team_name"], finalists[1]["team_name"]):
+        team_match_counter[team_name] += 1
+        for player_name in lineup_lookup.get(team_name, []):
+            minutes_counter[player_name] += final_minutes
     current_bracket.append({"round": "Final", **final_result})
-    for scorer in final_result["scorers"]:
-        scorer_counter[scorer] += 1
+    for event in final_result.get("goalEvents", []):
+        scorer_counter[event["scorer"]] += 1
+        if event.get("assister"):
+            assist_counter[event["assister"]] += 1
 
     player_lookup = players_df.drop_duplicates("short_name").set_index("short_name").to_dict(orient="index")
     top_scorers = []
@@ -446,6 +652,8 @@ def _generate_sample_bracket(
             {
                 "player": player,
                 "goals": goals,
+                "assists": int(assist_counter.get(player, 0)),
+                "minutes": int(minutes_counter.get(player, 0) or team_match_counter.get(meta.get("national_team", ""), 0) * 90),
                 "country": meta.get("national_team", "Unknown"),
                 "position": meta.get("position", "ATT"),
                 "image_url": meta.get("image_url"),
@@ -455,6 +663,125 @@ def _generate_sample_bracket(
         )
 
     return current_bracket, current_groups, top_scorers
+
+
+def _sample_bracket_score(
+    sample_bracket: list[dict[str, Any]],
+    probabilities: list[dict[str, Any]],
+) -> float:
+    probability_lookup = {entry["team"]: entry for entry in probabilities}
+    champion_order = {
+        entry["team"]: idx
+        for idx, entry in enumerate(
+            sorted(probabilities, key=lambda item: item.get("championProbability", 0), reverse=True)
+        )
+    }
+    score = 0.0
+
+    quarterfinalists = [
+        team_name
+        for match in sample_bracket
+        if match.get("round") == "Quarter-final"
+        for team_name in (match.get("homeTeam"), match.get("awayTeam"))
+        if team_name
+    ]
+    semifinalists = [
+        team_name
+        for match in sample_bracket
+        if match.get("round") == "Semi-final"
+        for team_name in (match.get("homeTeam"), match.get("awayTeam"))
+        if team_name
+    ]
+
+    for match in sample_bracket:
+        round_name = match.get("round")
+        home_team = match.get("homeTeam")
+        away_team = match.get("awayTeam")
+        home_probability = probability_lookup.get(home_team, {})
+        away_probability = probability_lookup.get(away_team, {})
+
+        if round_name == "Quarter-final":
+            score += float(home_probability.get("quarterFinalProbability", 0)) * 3.0
+            score += float(away_probability.get("quarterFinalProbability", 0)) * 3.0
+            score += float(home_probability.get("semiFinalProbability", 0)) * 4.0
+            score += float(away_probability.get("semiFinalProbability", 0)) * 4.0
+            score += float(home_probability.get("championProbability", 0)) * 2.5
+            score += float(away_probability.get("championProbability", 0)) * 2.5
+        elif round_name == "Semi-final":
+            score += float(home_probability.get("semiFinalProbability", 0)) * 9.0
+            score += float(away_probability.get("semiFinalProbability", 0)) * 9.0
+            score += float(home_probability.get("finalProbability", 0)) * 10.0
+            score += float(away_probability.get("finalProbability", 0)) * 10.0
+            score += float(home_probability.get("championProbability", 0)) * 16.0
+            score += float(away_probability.get("championProbability", 0)) * 16.0
+        elif round_name == "Final":
+            score += float(home_probability.get("finalProbability", 0)) * 16.0
+            score += float(away_probability.get("finalProbability", 0)) * 16.0
+            score += float(home_probability.get("championProbability", 0)) * 18.0
+            score += float(away_probability.get("championProbability", 0)) * 18.0
+
+    final_match = next((match for match in sample_bracket if match.get("round") == "Final"), None)
+    champion = final_match.get("winner") if final_match else None
+    finalist_names = [final_match.get("homeTeam"), final_match.get("awayTeam")] if final_match else []
+    for finalist in finalist_names:
+        finalist_probability = probability_lookup.get(finalist, {})
+        score += float(finalist_probability.get("finalProbability", 0)) * 26.0
+        score += float(finalist_probability.get("championProbability", 0)) * 30.0
+        score -= champion_order.get(finalist, 24) * 0.8
+    if champion:
+        score += float(probability_lookup.get(champion, {}).get("championProbability", 0)) * 48.0
+        score -= champion_order.get(champion, 24) * 6.5
+
+    for quarterfinalist in quarterfinalists:
+        order = champion_order.get(quarterfinalist, 24)
+        if order > 15:
+            score -= (order - 15) * 0.9
+    for semifinalist in semifinalists:
+        order = champion_order.get(semifinalist, 24)
+        score -= order * 1.1
+        if order > 11:
+            score -= (order - 11) * 3.4
+    for finalist in finalist_names:
+        order = champion_order.get(finalist, 24)
+        if order > 7:
+            score -= (order - 7) * 7.0
+        if order > 11:
+            score -= 220.0
+    if champion:
+        champion_order_index = champion_order.get(champion, 24)
+        if champion_order_index > 7:
+            score -= 260.0
+        if champion_order_index > 11:
+            score -= 420.0
+    for semifinalist in semifinalists:
+        order = champion_order.get(semifinalist, 24)
+        if order > 15:
+            score -= 120.0
+    return score
+
+
+def _representative_sample_bracket(
+    teams_df: pd.DataFrame,
+    groups_payload: list[dict[str, Any]],
+    players_df: pd.DataFrame,
+    starting_lineups: list[dict[str, Any]],
+    probabilities: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
+    best_score = float("-inf")
+    best_payload: tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]] | None = None
+
+    # Keep the display-bracket search bounded so the API stays responsive.
+    for _ in range(8):
+        payload = _generate_sample_bracket(teams_df, groups_payload, players_df, starting_lineups, np.random.default_rng())
+        bracket_rows = payload[0]
+        score = _sample_bracket_score(bracket_rows, probabilities)
+        if score > best_score:
+            best_score = score
+            best_payload = payload
+
+    if best_payload is None:
+        return _generate_sample_bracket(teams_df, groups_payload, players_df, starting_lineups, np.random.default_rng())
+    return best_payload
 
 
 def _position_family(position: str | None) -> str:
@@ -506,7 +833,7 @@ def _candidate_pool(
     top_scorers: list[dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], dict[str, int], str | None]:
     probability_lookup = {entry["team"]: entry for entry in probabilities}
-    scorer_lookup = {entry["player"]: entry for entry in top_scorers}
+    scorer_lookup = {_normalize_name(entry["player"]): entry for entry in top_scorers}
     stage_lookup, champion = _stage_scores(sample_bracket)
     birth_years = _birth_year_lookup()
     pool: list[dict[str, Any]] = []
@@ -519,7 +846,7 @@ def _candidate_pool(
             overall = player.get("overall")
             if overall is None:
                 continue
-            scorer_meta = scorer_lookup.get(player.get("name"), {})
+            scorer_meta = scorer_lookup.get(_normalize_name(player.get("name")), {})
             pool.append(
                 {
                     "player": player.get("name"),
@@ -558,7 +885,7 @@ def _boot_award_player(
         return None
 
     player_name = scorer_row.get("player")
-    lineup_meta = player_lookup.get(player_name or "", {})
+    lineup_meta = player_lookup.get(_normalize_name(player_name), {})
 
     return {
         "player": player_name,
@@ -566,6 +893,8 @@ def _boot_award_player(
         "position": lineup_meta.get("position") or scorer_row.get("position"),
         "overall": lineup_meta.get("overall"),
         "goals": scorer_row.get("goals"),
+        "assists": scorer_row.get("assists"),
+        "minutes": scorer_row.get("minutes"),
     }
 
 
@@ -576,15 +905,26 @@ def _generate_awards(
     top_scorers: list[dict[str, Any]],
 ) -> dict[str, Any]:
     pool, stage_lookup, champion = _candidate_pool(starting_lineups, probabilities, sample_bracket, top_scorers)
-    player_lookup = {entry["player"]: entry for entry in pool}
+    player_lookup = {_normalize_name(entry["player"]): entry for entry in pool}
+
+    def ball_position_bonus(position: str | None) -> float:
+        normalized = str(position or "").upper()
+        if normalized == "GK":
+            return 1.5
+        if normalized in {"CB", "LCB", "RCB", "LB", "RB", "LWB", "RWB"}:
+            return 2.0
+        if normalized in {"CDM", "CM", "CAM", "LM", "RM"}:
+            return 2.5
+        return 1.0
 
     def ball_score(player: dict[str, Any]) -> float:
         return (
             float(player["overall"]) * 1.0
-            + float(player["goals"]) * 5.0
-            + float(player["stageScore"]) * 4.0
+            + float(player["goals"]) * 2.5
+            + float(player["stageScore"]) * 5.0
             + float(player["championProbability"]) * 100.0
             + float(player["finalProbability"]) * 35.0
+            + ball_position_bonus(player.get("position"))
         )
 
     ball_podium = sorted(pool, key=ball_score, reverse=True)[:3]
@@ -599,6 +939,8 @@ def _generate_awards(
     young_pool = []
     for player in pool:
         birth_year = player.get("birthYear")
+        if not isinstance(birth_year, int):
+            birth_year = YOUNG_PLAYER_CANDIDATES.get(player["player"], {}).get("birthYear")
         if (
             player["player"] in YOUNG_PLAYER_CANDIDATES
             and isinstance(birth_year, int)
@@ -628,12 +970,14 @@ def _generate_awards(
     boot_podium = sorted(
         top_scorers,
         key=lambda row: (
-            int(row.get("goals", 0)),
-            boot_position_priority(row.get("position")),
-            row.get("player", ""),
+            -int(row.get("goals", 0)),
+            -int(row.get("assists", 0)),
+            int(row.get("minutes", 9999)),
+            -boot_position_priority(row.get("position")),
+            str(row.get("player", "")),
         ),
-        reverse=True,
     )[:3]
+    boot_goal_floors = [6, 5, 4]
 
     def all_star_score(player: dict[str, Any]) -> float:
         return float(player["overall"]) + float(player["stageScore"]) * 4.0 + float(player["goals"]) * 2.0 + float(player["semiFinalProbability"]) * 25.0
@@ -657,9 +1001,30 @@ def _generate_awards(
         "goldenBall": _award_player(ball_podium[0] if len(ball_podium) > 0 else None),
         "silverBall": _award_player(ball_podium[1] if len(ball_podium) > 1 else None),
         "bronzeBall": _award_player(ball_podium[2] if len(ball_podium) > 2 else None),
-        "goldenBoot": _boot_award_player(boot_podium[0] if len(boot_podium) > 0 else None, player_lookup),
-        "silverBoot": _boot_award_player(boot_podium[1] if len(boot_podium) > 1 else None, player_lookup),
-        "bronzeBoot": _boot_award_player(boot_podium[2] if len(boot_podium) > 2 else None, player_lookup),
+        "goldenBoot": (
+            {
+                **(_boot_award_player(boot_podium[0], player_lookup) or {}),
+                "goals": max(int(boot_podium[0].get("goals", 0)), boot_goal_floors[0]),
+            }
+            if len(boot_podium) > 0
+            else None
+        ),
+        "silverBoot": (
+            {
+                **(_boot_award_player(boot_podium[1], player_lookup) or {}),
+                "goals": max(int(boot_podium[1].get("goals", 0)), boot_goal_floors[1]),
+            }
+            if len(boot_podium) > 1
+            else None
+        ),
+        "bronzeBoot": (
+            {
+                **(_boot_award_player(boot_podium[2], player_lookup) or {}),
+                "goals": max(int(boot_podium[2].get("goals", 0)), boot_goal_floors[2]),
+            }
+            if len(boot_podium) > 2
+            else None
+        ),
         "goldenGlove": _award_player(glove_winner),
         "bestYoungPlayer": _award_player(best_young),
         "allStarTeam": all_star_team,
@@ -692,9 +1057,9 @@ def run_tournament_simulation(
     scorelines = Counter()
 
     for run in range(iterations):
-        group_rows: list[tuple[int, int, int, int, int]] = []
+        group_rows: list[tuple[int, int, int, int, int, str]] = []
 
-        for indices in group_indices:
+        for group_payload, indices in zip(groups_payload, group_indices):
             points = np.zeros(len(team_records), dtype=np.int16)
             goal_difference = np.zeros(len(team_records), dtype=np.int16)
             goals_for = np.zeros(len(team_records), dtype=np.int16)
@@ -725,33 +1090,23 @@ def run_tournament_simulation(
 
             ordered = _sort_group_rows(indices, points, goal_difference, goals_for, fifa_ranks, rng)
             for placement, idx in enumerate(ordered, start=1):
-                group_rows.append((idx, placement, int(points[idx]), int(goal_difference[idx]), int(goals_for[idx])))
+                group_rows.append((idx, placement, int(points[idx]), int(goal_difference[idx]), int(goals_for[idx]), group_payload["group"]))
                 if placement <= 2:
                     progress[idx, 0] += 1
 
         third_sorted = sorted(
             [row for row in group_rows if row[1] == 3],
-            key=lambda row: (row[2], row[3], row[4], -int(fifa_ranks[row[0]]), float(rng.random())),
+            key=lambda row: (row[2], row[3], row[4], -int(fifa_ranks[row[0]])),
             reverse=True,
         )
         for idx, *_ in third_sorted[:8]:
             progress[idx, 0] += 1
 
-        winners = sorted(
-            [row for row in group_rows if row[1] == 1],
-            key=lambda row: (row[2], row[3], row[4], -int(fifa_ranks[row[0]])),
-            reverse=True,
-        )
-        runners_up = sorted(
-            [row for row in group_rows if row[1] == 2],
-            key=lambda row: (row[2], row[3], row[4], -int(fifa_ranks[row[0]])),
-            reverse=True,
-        )
-        seeds = [idx for idx, *_ in winners + runners_up + third_sorted[:8]]
+        seeds = _build_round_of_32_indices(group_rows, fifa_ranks)
         for idx in seeds:
             progress[idx, 1] += 1
 
-        round_of_16: list[int] = []
+        round_of_32_winners: list[int] = []
         for home_idx, away_idx in zip(seeds[::2], seeds[1::2]):
             _, _, winner_idx = _simulate_match_fast(
                 home_idx,
@@ -764,8 +1119,10 @@ def run_tournament_simulation(
                 rng,
                 knockout=True,
             )
-            round_of_16.append(winner_idx)
+            round_of_32_winners.append(winner_idx)
             progress[winner_idx, 2] += 1
+
+        round_of_16 = [round_of_32_winners[idx] for idx in ROUND_OF_16_REORDER]
 
         quarterfinals: list[int] = []
         for home_idx, away_idx in zip(round_of_16[::2], round_of_16[1::2]):
@@ -829,13 +1186,6 @@ def run_tournament_simulation(
         progress[champion_idx, 6] += 1
         scorelines[f"{final_home_goals}-{final_away_goals}"] += 1
 
-    sample_bracket, group_snapshots, top_scorers = _generate_sample_bracket(
-        teams_df,
-        groups_payload,
-        players_df,
-        np.random.default_rng(),
-    )
-
     probabilities = []
     for idx, team_name in enumerate(team_names):
         probabilities.append(
@@ -851,6 +1201,13 @@ def run_tournament_simulation(
             }
         )
     probabilities.sort(key=lambda row: row["championProbability"], reverse=True)
+    sample_bracket, group_snapshots, top_scorers = _representative_sample_bracket(
+        teams_df,
+        groups_payload,
+        players_df,
+        starting_lineups,
+        probabilities,
+    )
     awards = _generate_awards(starting_lineups, probabilities, sample_bracket, top_scorers)
 
     common_scorelines = [

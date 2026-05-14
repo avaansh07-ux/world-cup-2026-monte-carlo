@@ -9,7 +9,20 @@ from typing import Any
 import pandas as pd
 
 
-ROOT_DIR = Path(__file__).resolve().parents[2]
+def _discover_root_dir() -> Path:
+    current = Path(__file__).resolve()
+    for candidate in current.parents:
+        if (
+            (candidate / "data" / "teams.json").exists()
+            and (candidate / "data" / "groups.json").exists()
+            and (candidate / "data" / "starting_lineups.json").exists()
+            and (candidate / "config" / "model_weights.json").exists()
+        ):
+            return candidate
+    return current.parents[2]
+
+
+ROOT_DIR = _discover_root_dir()
 DATA_DIR = ROOT_DIR / "data"
 CONFIG_DIR = ROOT_DIR / "config"
 FC26_DATASET = DATA_DIR / "FC26_20250921.csv"

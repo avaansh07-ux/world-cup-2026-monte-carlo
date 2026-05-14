@@ -8,15 +8,26 @@ import re
 
 import pandas as pd
 
-from backend.models.static_data import (
-    FC26_DATASET,
-    NATIONALITY_ALIASES,
-    fc26_dataset_exists,
-    fc26_dataset_path,
-    generate_provisional_squads,
-    load_static_datasets,
-)
-from backend.models.team_strength import calculate_team_profiles
+try:
+    from backend.models.static_data import (
+        FC26_DATASET,
+        NATIONALITY_ALIASES,
+        fc26_dataset_exists,
+        fc26_dataset_path,
+        generate_provisional_squads,
+        load_static_datasets,
+    )
+    from backend.models.team_strength import calculate_team_profiles
+except ModuleNotFoundError:
+    from models.static_data import (
+        FC26_DATASET,
+        NATIONALITY_ALIASES,
+        fc26_dataset_exists,
+        fc26_dataset_path,
+        generate_provisional_squads,
+        load_static_datasets,
+    )
+    from models.team_strength import calculate_team_profiles
 
 
 def _normalize_name(value: str) -> str:

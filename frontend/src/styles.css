@@ -712,6 +712,17 @@ select {
   align-items: center;
 }
 
+.player-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.player-copy strong,
+.player-copy small {
+  display: block;
+}
+
 .avatar-image,
 .team-portrait,
 .team-badge,
@@ -1319,6 +1330,26 @@ select {
     border-radius: 24px;
   }
 
+  .masthead {
+    padding: 20px;
+  }
+
+  .brand-lockup {
+    align-items: start;
+    gap: 14px;
+  }
+
+  .brand-mark {
+    width: 68px;
+    height: 68px;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 12vw, 3.2rem);
+    line-height: 0.95;
+  }
+
   .brand-lockup,
   .team-hero,
   .x-factor-card,
@@ -1341,9 +1372,45 @@ select {
     width: 100%;
   }
 
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .rating-grid,
   .score-grid {
     grid-template-columns: 1fr;
+  }
+
+  .awards-grid,
+  .allstar-grid,
+  .comparison-odds-grid,
+  .comparison-grid,
+  .comparison-rating-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-toggle {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .comparison-card,
+  .award-card,
+  .allstar-panel {
+    padding: 16px;
+  }
+
+  .comparison-card-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .comparison-lineup-row {
+    grid-template-columns: 46px minmax(0, 1fr);
   }
 
   .ticker-track {
@@ -1370,6 +1437,37 @@ select {
 
   .pitch-player {
     width: clamp(78px, 21vw, 94px);
+  }
+
+  .lineup-tile {
+    padding: 6px 5px 8px;
+  }
+
+  .lineup-tile-name strong {
+    font-size: clamp(0.56rem, 2.3vw, 0.66rem);
+  }
+
+  .bracket-rounds {
+    grid-template-columns: repeat(5, minmax(240px, 1fr));
+    gap: 12px;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .round-column {
+    min-width: 240px;
+  }
+
+  .projected-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .prob-columns {
+    width: 100%;
+    justify-content: flex-start;
+    margin-left: 0;
+    text-align: left;
   }
 
   .football-card-grid,

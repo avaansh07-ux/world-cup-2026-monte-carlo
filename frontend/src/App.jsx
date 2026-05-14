@@ -962,6 +962,40 @@ export default function App() {
     }
   }
 
+  async function handleResetSimulation() {
+    setRunning(true);
+    setError("");
+    setSquadMessage("");
+    setElapsedTime(null);
+    setSimulation(emptySimulation);
+    setComparison(emptyComparison);
+    setComparisonError("");
+    setMatchPreview(null);
+    setInjuries([]);
+    setActiveTab("Overview");
+    try {
+      await Promise.all([
+        selectedTeamId
+          ? loadSelectedTeamProfile(selectedTeamId, teams, { preserveExisting: true })
+          : Promise.resolve(),
+        compareTeamAId
+          ? fetchTeam(compareTeamAId).then((payload) =>
+              setCompareTeamADetail(normalizeTeamPayload(payload)),
+            )
+          : Promise.resolve(),
+        compareTeamBId
+          ? fetchTeam(compareTeamBId).then((payload) =>
+              setCompareTeamBDetail(normalizeTeamPayload(payload)),
+            )
+          : Promise.resolve(),
+      ]);
+    } catch {
+      setError("Could not reset the current simulation state.");
+    } finally {
+      setRunning(false);
+    }
+  }
+
   async function handleToggleInjury(playerName) {
     if (!teamDetail) {
       return;
@@ -1106,7 +1140,7 @@ export default function App() {
             </div>
             <div>
               <p className="eyebrow">Monte Carlo Simulation</p>
-              <h1>World Cup Simulator</h1>
+              <h1>World Cup 2026 Simulation</h1>
             </div>
           </div>
           <div className="control-row">
@@ -1129,8 +1163,8 @@ export default function App() {
             <button onClick={handleRunSimulation} disabled={running || loading}>
               {running ? "Simulating..." : "Run Simulation"}
             </button>
-            <button className="ghost" onClick={handleGenerateSquads} disabled={running || loading}>
-              Refresh Squads
+            <button className="ghost" onClick={handleResetSimulation} disabled={running || loading}>
+              Refresh Simulation
             </button>
           </div>
           {running ? (
@@ -1287,28 +1321,6 @@ export default function App() {
               )}
             </article>
 
-            <article className="panel">
-              <div className="panel-header">
-                <span>Match Preview</span>
-                <span>single knockout sample</span>
-              </div>
-              {matchPreview ? (
-                <div className="match-preview">
-                  <div className="match-line">
-                    <span>{matchPreview.homeTeam}</span>
-                    <strong>{matchPreview.homeGoals}</strong>
-                  </div>
-                  <div className="match-line">
-                    <span>{matchPreview.awayTeam}</span>
-                    <strong>{matchPreview.awayGoals}</strong>
-                  </div>
-                  <p>Winner: {matchPreview.winner || "Level after regular time"}</p>
-                  <p>Scorers: {matchPreview.scorers.join(", ") || "None"}</p>
-                </div>
-              ) : (
-                <p className="empty-state">Use Match Preview to generate a one-off knockout scoreline.</p>
-              )}
-            </article>
           </section>
         ) : null}
 
@@ -1484,7 +1496,7 @@ export default function App() {
                             <div className="list-row" key={player.player_id}>
                               <div className="row-with-media">
                                 <InitialsVisual label={player.short_name} />
-                                <div>
+                                <div className="player-copy">
                                   <strong>{player.short_name}</strong>
                                   <small>
                                     {player.position} · {player.club}
